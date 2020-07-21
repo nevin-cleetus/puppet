@@ -37,3 +37,51 @@ sudo dpkg -i puppet6-release-bionic.deb
 sudo apt update
 
 sudo apt install -y puppet-agent
+
+
+
+Master Node -  Modify the config file [/etc/puppetlabs/puppet/puppet.conf] to include the master details.
+
+
+[main]
+certname = puppetmaster
+server = puppetmaster
+environment = production
+runinterval = 15m
+
+systemctl restart puppetserver
+
+
+
+Client Node:- Modify the config file ["/etc/puppetlabs/puppet/puppet.conf"] to include the agent and server details
+
+[main]
+certname = agent1
+server = puppetmaster
+environment = production
+runinterval = 15m
+
+
+Execute the below command on agent node.
+
+sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+
+
+
+
+Master Node
+===========
+
+Sign certificates on the certificate authority (CA) master
+
+sudo /opt/puppetlabs/bin/puppetserver ca list
+
+sudo /opt/puppetlabs/bin/puppetserver ca sign --all
+
+
+
+
+
+
+
+
