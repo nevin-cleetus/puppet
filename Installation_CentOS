@@ -1,4 +1,7 @@
 
+Puppet Master node
+-----------------
+
 sudo yum install -y ntp
 
 sudo ntpdate 0.centos.pool.ntp.org
@@ -6,3 +9,31 @@ sudo ntpdate 0.centos.pool.ntp.org
 sudo rpm -Uvh http://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm
 
 sudo yum install puppetserver puppetdb puppetdb-termini
+
+To start the Puppet server run below command and verify the status.
+
+systemctl start puppetserver
+
+
+systemctl status puppetserver
+
+
+
+Puppet Agent node  CentOS
+-----------------
+
+sudo rpm -Uvh http://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm
+
+sudo yum install puppet-agent
+
+
+
+Puppet Agent node Ubuntu
+
+wget https://apt.puppetlabs.com/puppet6-release-bionic.deb
+
+sudo dpkg -i puppet6-release-bionic.deb
+
+sudo apt update
+
+sudo apt install -y puppet-agent
