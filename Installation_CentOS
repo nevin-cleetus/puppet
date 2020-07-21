@@ -1,0 +1,8 @@
+
+sudo yum install -y ntp
+
+sudo ntpdate 0.centos.pool.ntp.org
+
+sudo rpm -Uvh http://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm
+
+sudo yum install puppetserver puppetdb puppetdb-termini
