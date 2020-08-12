@@ -1,0 +1,165 @@
+	Puppet Lab
+
+Connect to AWS instance using Putty.  
+Download the ppk (singaporekeypair.ppk) file and store in your local folder
+
+Ensure
+1. Internet is working and make sure you are not connected through vpn or any other proxy.
+2. Disable firewall if enabled.	
+
+Open Putty software, connect to the AWS servers using the Public IP (For Exp:- 13.212.34.10) in the Host Name of putty.
+
+Next on the left-pan go to Connection->SSH->Auth and browse and upload the singaporekeypair.ppk as shown in this screenshot. 
+
+Click on Yes in the Security Alert. 
+In the next screen, when prompted with login as:, provide the username as ec2-user
+If you get the command prompt, you have SUCCESSfully connected to the AWS server
+
+
+
+
+<b>Connect to Puppet Master & Puppet Agent<b>
+
+Lab Exercise 1 
+Resources -   
+a)	File 
+
+PuppetMaster
+
+[root@ip-<MASTER IP> ec2-user]# cd /etc/puppetlabs/code/environments/production/manifests
+
+[root@ip-<MASTER IP> ec2-user]# vi site.pp
+
+file { '/opt/gitrepo':
+  ensure => directory,
+  owner  => root,
+  group  => root,
+  mode   => "755",
+}
+Save the file by pressing Esc + :wq!
+
+PuppetAgent
+
+[root@ip-<AGENT IP> ec2-user]# puppet agent -t
+
+Expected Result:-  The puppet should create a folder with name /opt/gitrep. The permission should be set as “drwxr-xr-x”  and owner should be root.
+
+PuppetMaster  
+
+Now modify the file site.pp to remove the directory we created.
+[root@ip-<MASTER IP> ec2-user]# vi site.pp
+
+
+
+
+file { '/opt/gitrepo':
+  ensure => absent,
+  owner  => root,
+  force  => true,
+  group  => root,
+  mode   => "755",
+}
+
+PuppetAgent
+
+Override the runInterval in Puppet Agent to query the catalog in 1 minute interval
+
+[root@ip-<AGENT IP> ec2-user]# vi /etc/puppetlabs/puppet/puppet.conf
+[main]
+certname = agent1
+server = puppetmaster
+runinterval = 1m
+
+ 
+b)	User
+
+PuppetMaster  
+
+Create a new user named ‘puppetuser’ using puppet manifest file 
+
+[root@ip-<MASTER IP> ec2-user]# vi site.pp
+
+user { 'puppetuser':
+     ensure=>present,
+     uid=> '507',
+     shell=> '//bin//bash',
+     home=>'//home//puppetuser',
+     managehome=>true,
+}
+Save the file by pressing Esc + :wq!
+
+PuppetAgent
+
+[root@ip-<AGENT IP> ec2-user]# puppet agent -t
+
+Expected Result:-  A new user will be created and a folder under /home with name puppetuser.
+
+c)	Package
+		
+[root@ip-<MASTER IP> ec2-user]# vi site.pp
+	
+package {'curl':
+    ensure => installed,
+}
+package { 'epel-release':
+        ensure  => present,
+}
+
+package { 'nginx':
+    ensure => installed,
+}
+d)	Service
+	
+package { 'epel-release':
+        ensure  => present,
+}
+package { 'nginx':
+    ensure => installed,
+}
+service { "nginx":
+      ensure  => running,
+}
+
+
+
+
+
+e)	Exec
+
+exec {'Run a command':
+    command => '/bin/echo `/bin/date` >/tmp/output.txt',
+}
+	
+f)	cronjob	
+
+
+	
+
+
+Lab Exercise 2 - Node Definition
+
+PuppetMaster  
+
+Create a new user named ‘puppetuser’ using puppet manifest file 
+
+[root@ip-<MASTER IP> ec2-user]# vi node.pp
+
+node default {
+  file {'/tmp/testfile.txt':
+    ensure => file,
+    content => "hello world",
+  }
+}
+
+PuppetAgent
+
+[root@ip-<AGENT IP> ec2-user]# puppet agent -t
+
+Expected Result:-  A new text file (testfile.txt) shall be created under /tmp directory of your agent
+
+
+
+
+
+
+
