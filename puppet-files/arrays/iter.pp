@@ -1,9 +1,5 @@
-$files = ['file1','file2','file3']
 
-$files.each | $file | {
-  file { "/tmp/${file}.txt":
-    ensure  => present,
-    content => "I am ${file}",
-  }
+$nics = $facts['networking']['interfaces']
+$nics.each | String $interface, Hash $attributes | {
+  notice("Interface ${interface} has IP ${attributes['ip']}")
 }
-

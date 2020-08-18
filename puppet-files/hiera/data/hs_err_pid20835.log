@@ -1,0 +1,1573 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 131072 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2763), pid=20835, tid=0x00007fb483536700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_252-b09) (build 1.8.0_252-b09)
+# Java VM: OpenJDK 64-Bit Server VM (25.252-b09 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fb47c04c800):  JavaThread "main" [_thread_in_vm, id=20836, stack(0x00007fb483437000,0x00007fb483537000)]
+
+Stack: [0x00007fb483437000,0x00007fb483537000],  sp=0x00007fb48352a3e0,  free space=972k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xb18dbd]  VMError::report_and_die()+0x2cd
+V  [libjvm.so+0x4e2b54]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0xb4
+V  [libjvm.so+0x8df039]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xf9
+V  [libjvm.so+0x8d677e]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2e
+V  [libjvm.so+0xb157ec]  VirtualSpace::expand_by(unsigned long, bool)+0x13c
+V  [libjvm.so+0x85ad97]  VirtualSpaceList::get_new_chunk(unsigned long, unsigned long)+0x1a7
+V  [libjvm.so+0x85cf4c]  SpaceManager::grow_and_allocate(unsigned long)+0x1dc
+V  [libjvm.so+0x85d7c1]  SpaceManager::allocate(unsigned long)+0x1d1
+V  [libjvm.so+0x85e317]  Metaspace::allocate(ClassLoaderData*, unsigned long, bool, MetaspaceObj::Type, Thread*)+0x1a7
+V  [libjvm.so+0x62d2bc]  InstanceKlass::allocate_instance_klass(ClassLoaderData*, int, int, int, int, ReferenceType, AccessFlags, Symbol*, Klass*, bool, Thread*)+0xdc
+V  [libjvm.so+0x443b4d]  ClassFileParser::parseClassFile(Symbol*, ClassLoaderData*, Handle, KlassHandle, GrowableArray<Handle>*, TempNewSymbol&, bool, Thread*)+0x104d
+V  [libjvm.so+0xa88482]  SystemDictionary::resolve_from_stream(Symbol*, Handle, Handle, ClassFileStream*, bool, Thread*)+0x1b2
+V  [libjvm.so+0x6c41c6]  jvm_define_class_common(JNIEnv_*, char const*, _jobject*, signed char const*, int, _jobject*, char const*, unsigned char, Thread*)+0x266
+V  [libjvm.so+0x6c5afb]  JVM_DefineClassWithSource+0x8b
+C  [libjava.so+0xdd7a]  Java_java_lang_ClassLoader_defineClass1+0x17a
+J 424  java.lang.ClassLoader.defineClass1(Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class; (0 bytes) @ 0x00007fb46d220e0b [0x00007fb46d220d00+0x10b]
+J 405 C1 java.lang.ClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class; (43 bytes) @ 0x00007fb46d216354 [0x00007fb46d215d80+0x5d4]
+J 363 C1 java.net.URLClassLoader.defineClass(Ljava/lang/String;Lsun/misc/Resource;)Ljava/lang/Class; (142 bytes) @ 0x00007fb46d1ddf4c [0x00007fb46d1dc400+0x1b4c]
+J 290 C1 java.net.URLClassLoader$1.run()Ljava/lang/Class; (63 bytes) @ 0x00007fb46d1b1c4c [0x00007fb46d1b19a0+0x2ac]
+J 174 C1 java.net.URLClassLoader$1.run()Ljava/lang/Object; (5 bytes) @ 0x00007fb46d16998c [0x00007fb46d169900+0x8c]
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x680c27]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0xd37
+V  [libjvm.so+0x6d3f9f]  JVM_DoPrivileged+0x52f
+J 155  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x00007fb46d15ea95 [0x00007fb46d15e9c0+0xd5]
+J 173 C1 java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class; (47 bytes) @ 0x00007fb46d169044 [0x00007fb46d168ec0+0x184]
+J 1076 C1 java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (122 bytes) @ 0x00007fb46d3e89cc [0x00007fb46d3e8080+0x94c]
+J 157 C1 sun.misc.Launcher$AppClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (85 bytes) @ 0x00007fb46d15fbcc [0x00007fb46d15f240+0x98c]
+J 156 C1 java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class; (7 bytes) @ 0x00007fb46d15ee84 [0x00007fb46d15ed80+0x104]
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x680c27]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0xd37
+V  [libjvm.so+0x67e53f]  JavaCalls::call_virtual(JavaValue*, KlassHandle, Symbol*, Symbol*, JavaCallArguments*, Thread*)+0x25f
+V  [libjvm.so+0x67eb14]  JavaCalls::call_virtual(JavaValue*, Handle, KlassHandle, Symbol*, Symbol*, Handle, Thread*)+0x64
+V  [libjvm.so+0xa8e65e]  SystemDictionary::load_instance_class(Symbol*, Handle, Thread*)+0x2de
+V  [libjvm.so+0xa8d0a7]  SystemDictionary::resolve_instance_class_or_null(Symbol*, Handle, Handle, Thread*)+0x867
+V  [libjvm.so+0xa8eefc]  SystemDictionary::resolve_or_fail(Symbol*, Handle, Handle, bool, Thread*)+0x5c
+V  [libjvm.so+0x4d2d33]  ConstantPool::klass_at_impl(constantPoolHandle, int, Thread*)+0x1a3
+V  [libjvm.so+0x66edb2]  InterpreterRuntime::_new(JavaThread*, ConstantPool*, int)+0xb2
+j  clojure.core$tree_seq$walk__6387.invoke(Ljava/lang/Object;)Ljava/lang/Object;+4
+j  clojure.core$tree_seq.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+23
+j  clojure.core$flatten.invokeStatic(Ljava/lang/Object;)Ljava/lang/Object;+24
+j  clojure.core$flatten.invoke(Ljava/lang/Object;)Ljava/lang/Object;+3
+j  clojure.spec.alpha$keys.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Lclojure/lang/ISeq;)Ljava/lang/Object;+149
+j  clojure.spec.alpha$keys.doInvoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+12
+J 943 C1 clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object; (3076 bytes) @ 0x00007fb46d393bdc [0x00007fb46d37f7e0+0x143fc]
+j  clojure.lang.Var.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+5
+j  clojure.lang.Compiler.macroexpand1(Ljava/lang/Object;)Ljava/lang/Object;+64
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+121
+J 1176 C1 clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr; (368 bytes) @ 0x00007fb46d41a48c [0x00007fb46d419780+0xd0c]
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler$InvokeExpr.parse(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;)Lclojure/lang/Compiler$Expr;+555
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+294
+J 1176 C1 clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr; (368 bytes) @ 0x00007fb46d41a48c [0x00007fb46d419780+0xd0c]
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler.eval(Ljava/lang/Object;Z)Ljava/lang/Object;+398
+j  clojure.lang.Compiler.load(Ljava/io/Reader;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;+354
+j  clojure.lang.RT.loadResourceScript(Ljava/lang/Class;Ljava/lang/String;Z)V+53
+j  clojure.lang.RT.loadResourceScript(Ljava/lang/Class;Ljava/lang/String;)V+3
+j  clojure.lang.RT.load(Ljava/lang/String;Z)V+285
+j  clojure.lang.RT.load(Ljava/lang/String;)V+2
+j  clojure.lang.Compiler.ensureMacroCheck()Lclojure/lang/Var;+29
+j  clojure.lang.Compiler.checkSpecs(Lclojure/lang/Var;Lclojure/lang/ISeq;)V+12
+j  clojure.lang.Compiler.macroexpand1(Ljava/lang/Object;)Ljava/lang/Object;+37
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+121
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+238
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler$MapExpr.parse(Lclojure/lang/Compiler$C;Lclojure/lang/IPersistentMap;)Lclojure/lang/Compiler$Expr;+87
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+302
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler$InvokeExpr.parse(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;)Lclojure/lang/Compiler$Expr;+555
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+294
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+238
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler$BodyExpr$Parser.parse(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+77
+j  clojure.lang.Compiler$FnMethod.parse(Lclojure/lang/Compiler$ObjExpr;Lclojure/lang/ISeq;Ljava/lang/Object;)Lclojure/lang/Compiler$FnMethod;+968
+j  clojure.lang.Compiler$FnExpr.parse(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+570
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+245
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+238
+j  clojure.lang.Compiler.eval(Ljava/lang/Object;Z)Ljava/lang/Object;+354
+j  clojure.lang.Compiler.eval(Ljava/lang/Object;Z)Ljava/lang/Object;+238
+j  clojure.lang.Compiler.eval(Ljava/lang/Object;)Ljava/lang/Object;+2
+j  clojure.core$eval.invokeStatic(Ljava/lang/Object;)Ljava/lang/Object;+3
+j  clojure.core$eval.invoke(Ljava/lang/Object;)Ljava/lang/Object;+3
+j  clojure.tools.logging.impl$slf4j_factory.invokeStatic()Ljava/lang/Object;+4796
+j  clojure.tools.logging.impl$slf4j_factory.invoke()Ljava/lang/Object;+0
+j  clojure.tools.logging.impl$find_factory.invokeStatic()Ljava/lang/Object;+9
+j  clojure.tools.logging.impl$find_factory.invoke()Ljava/lang/Object;+0
+j  clojure.tools.logging__init.load()V+986
+j  clojure.tools.logging__init.<clinit>()V+18
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x680c27]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0xd37
+V  [libjvm.so+0x6306e2]  InstanceKlass::call_class_initializer_impl(instanceKlassHandle, Thread*)+0x112
+V  [libjvm.so+0x630c53]  InstanceKlass::initialize_impl(instanceKlassHandle, Thread*)+0x313
+V  [libjvm.so+0x6310c0]  InstanceKlass::initialize(Thread*)+0x60
+V  [libjvm.so+0x6cfd06]  find_class_from_class_loader(JNIEnv_*, Symbol*, unsigned char, Handle, Handle, unsigned char, Thread*)+0x56
+V  [libjvm.so+0x6d00b4]  JVM_FindClassFromCaller+0x174
+C  [libjava.so+0xda5b]  Java_java_lang_Class_forName0+0x16b
+J 559  java.lang.Class.forName0(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class; (0 bytes) @ 0x00007fb46d2867f4 [0x00007fb46d286700+0xf4]
+J 569 C1 java.lang.Class.forName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (53 bytes) @ 0x00007fb46d296e64 [0x00007fb46d296960+0x504]
+J 570 C1 clojure.lang.RT.classForName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (33 bytes) @ 0x00007fb46d29772c [0x00007fb46d297500+0x22c]
+J 582 C1 clojure.lang.RT.classForName(Ljava/lang/String;)Ljava/lang/Class; (9 bytes) @ 0x00007fb46d29b6c4 [0x00007fb46d29b640+0x84]
+...<more frames>...
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J 424  java.lang.ClassLoader.defineClass1(Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class; (0 bytes) @ 0x00007fb46d220d91 [0x00007fb46d220d00+0x91]
+J 405 C1 java.lang.ClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class; (43 bytes) @ 0x00007fb46d216354 [0x00007fb46d215d80+0x5d4]
+J 363 C1 java.net.URLClassLoader.defineClass(Ljava/lang/String;Lsun/misc/Resource;)Ljava/lang/Class; (142 bytes) @ 0x00007fb46d1ddf4c [0x00007fb46d1dc400+0x1b4c]
+J 290 C1 java.net.URLClassLoader$1.run()Ljava/lang/Class; (63 bytes) @ 0x00007fb46d1b1c4c [0x00007fb46d1b19a0+0x2ac]
+J 174 C1 java.net.URLClassLoader$1.run()Ljava/lang/Object; (5 bytes) @ 0x00007fb46d16998c [0x00007fb46d169900+0x8c]
+v  ~StubRoutines::call_stub
+J 155  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x00007fb46d15ea23 [0x00007fb46d15e9c0+0x63]
+J 173 C1 java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class; (47 bytes) @ 0x00007fb46d169044 [0x00007fb46d168ec0+0x184]
+J 1076 C1 java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (122 bytes) @ 0x00007fb46d3e89cc [0x00007fb46d3e8080+0x94c]
+J 157 C1 sun.misc.Launcher$AppClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (85 bytes) @ 0x00007fb46d15fbcc [0x00007fb46d15f240+0x98c]
+J 156 C1 java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class; (7 bytes) @ 0x00007fb46d15ee84 [0x00007fb46d15ed80+0x104]
+v  ~StubRoutines::call_stub
+j  clojure.core$tree_seq$walk__6387.invoke(Ljava/lang/Object;)Ljava/lang/Object;+4
+j  clojure.core$tree_seq.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+23
+j  clojure.core$flatten.invokeStatic(Ljava/lang/Object;)Ljava/lang/Object;+24
+j  clojure.core$flatten.invoke(Ljava/lang/Object;)Ljava/lang/Object;+3
+j  clojure.spec.alpha$keys.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Lclojure/lang/ISeq;)Ljava/lang/Object;+149
+j  clojure.spec.alpha$keys.doInvoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+12
+J 943 C1 clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object; (3076 bytes) @ 0x00007fb46d393bdc [0x00007fb46d37f7e0+0x143fc]
+j  clojure.lang.Var.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+5
+j  clojure.lang.Compiler.macroexpand1(Ljava/lang/Object;)Ljava/lang/Object;+64
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+121
+J 1176 C1 clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr; (368 bytes) @ 0x00007fb46d41a48c [0x00007fb46d419780+0xd0c]
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler$InvokeExpr.parse(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;)Lclojure/lang/Compiler$Expr;+555
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+294
+J 1176 C1 clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr; (368 bytes) @ 0x00007fb46d41a48c [0x00007fb46d419780+0xd0c]
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler.eval(Ljava/lang/Object;Z)Ljava/lang/Object;+398
+j  clojure.lang.Compiler.load(Ljava/io/Reader;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;+354
+j  clojure.lang.RT.loadResourceScript(Ljava/lang/Class;Ljava/lang/String;Z)V+53
+j  clojure.lang.RT.loadResourceScript(Ljava/lang/Class;Ljava/lang/String;)V+3
+j  clojure.lang.RT.load(Ljava/lang/String;Z)V+285
+j  clojure.lang.RT.load(Ljava/lang/String;)V+2
+j  clojure.lang.Compiler.ensureMacroCheck()Lclojure/lang/Var;+29
+j  clojure.lang.Compiler.checkSpecs(Lclojure/lang/Var;Lclojure/lang/ISeq;)V+12
+j  clojure.lang.Compiler.macroexpand1(Ljava/lang/Object;)Ljava/lang/Object;+37
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+121
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+238
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler$MapExpr.parse(Lclojure/lang/Compiler$C;Lclojure/lang/IPersistentMap;)Lclojure/lang/Compiler$Expr;+87
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+302
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler$InvokeExpr.parse(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;)Lclojure/lang/Compiler$Expr;+555
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+294
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+238
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+3
+j  clojure.lang.Compiler$BodyExpr$Parser.parse(Lclojure/lang/Compiler$C;Ljava/lang/Object;)Lclojure/lang/Compiler$Expr;+77
+j  clojure.lang.Compiler$FnMethod.parse(Lclojure/lang/Compiler$ObjExpr;Lclojure/lang/ISeq;Ljava/lang/Object;)Lclojure/lang/Compiler$FnMethod;+968
+j  clojure.lang.Compiler$FnExpr.parse(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+570
+j  clojure.lang.Compiler.analyzeSeq(Lclojure/lang/Compiler$C;Lclojure/lang/ISeq;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+245
+j  clojure.lang.Compiler.analyze(Lclojure/lang/Compiler$C;Ljava/lang/Object;Ljava/lang/String;)Lclojure/lang/Compiler$Expr;+238
+j  clojure.lang.Compiler.eval(Ljava/lang/Object;Z)Ljava/lang/Object;+354
+j  clojure.lang.Compiler.eval(Ljava/lang/Object;Z)Ljava/lang/Object;+238
+j  clojure.lang.Compiler.eval(Ljava/lang/Object;)Ljava/lang/Object;+2
+j  clojure.core$eval.invokeStatic(Ljava/lang/Object;)Ljava/lang/Object;+3
+j  clojure.core$eval.invoke(Ljava/lang/Object;)Ljava/lang/Object;+3
+j  clojure.tools.logging.impl$slf4j_factory.invokeStatic()Ljava/lang/Object;+4796
+j  clojure.tools.logging.impl$slf4j_factory.invoke()Ljava/lang/Object;+0
+j  clojure.tools.logging.impl$find_factory.invokeStatic()Ljava/lang/Object;+9
+j  clojure.tools.logging.impl$find_factory.invoke()Ljava/lang/Object;+0
+j  clojure.tools.logging__init.load()V+986
+j  clojure.tools.logging__init.<clinit>()V+18
+v  ~StubRoutines::call_stub
+J 559  java.lang.Class.forName0(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class; (0 bytes) @ 0x00007fb46d28677a [0x00007fb46d286700+0x7a]
+J 569 C1 java.lang.Class.forName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (53 bytes) @ 0x00007fb46d296e64 [0x00007fb46d296960+0x504]
+J 570 C1 clojure.lang.RT.classForName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (33 bytes) @ 0x00007fb46d29772c [0x00007fb46d297500+0x22c]
+J 582 C1 clojure.lang.RT.classForName(Ljava/lang/String;)Ljava/lang/Class; (9 bytes) @ 0x00007fb46d29b6c4 [0x00007fb46d29b640+0x84]
+j  clojure.lang.RT.loadClassForName(Ljava/lang/String;)Ljava/lang/Class;+24
+j  clojure.lang.RT.load(Ljava/lang/String;Z)V+224
+j  clojure.lang.RT.load(Ljava/lang/String;)V+2
+j  clojure.core$load$fn__6839.invoke()Ljava/lang/Object;+17
+j  clojure.core$load.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+531
+j  clojure.core$load.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.invoke(Ljava/lang/Object;)Ljava/lang/Object;+50
+j  clojure.core$load_one.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+13
+j  clojure.core$load_one.invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+9
+j  clojure.core$load_lib$fn__6780.invoke()Ljava/lang/Object;+19
+j  clojure.core$load_lib.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Lclojure/lang/ISeq;)Ljava/lang/Object;+519
+j  clojure.core$load_lib.doInvoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+12
+J 943 C1 clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object; (3076 bytes) @ 0x00007fb46d393bdc [0x00007fb46d37f7e0+0x143fc]
+j  clojure.core$apply.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+18
+j  clojure.core$load_libs.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+693
+j  clojure.core$load_libs.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+136
+j  clojure.core$apply.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+18
+j  clojure.core$require.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+12
+j  clojure.core$require.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+225
+j  puppetlabs.kitchensink.core$loading__6721__auto____192.invoke()Ljava/lang/Object;+101
+j  puppetlabs.kitchensink.core__init.load()V+27
+j  puppetlabs.kitchensink.core__init.<clinit>()V+24
+v  ~StubRoutines::call_stub
+J 559  java.lang.Class.forName0(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class; (0 bytes) @ 0x00007fb46d28677a [0x00007fb46d286700+0x7a]
+J 569 C1 java.lang.Class.forName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (53 bytes) @ 0x00007fb46d296e64 [0x00007fb46d296960+0x504]
+J 570 C1 clojure.lang.RT.classForName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (33 bytes) @ 0x00007fb46d29772c [0x00007fb46d297500+0x22c]
+J 582 C1 clojure.lang.RT.classForName(Ljava/lang/String;)Ljava/lang/Class; (9 bytes) @ 0x00007fb46d29b6c4 [0x00007fb46d29b640+0x84]
+j  clojure.lang.RT.loadClassForName(Ljava/lang/String;)Ljava/lang/Class;+24
+j  clojure.lang.RT.load(Ljava/lang/String;Z)V+224
+j  clojure.lang.RT.load(Ljava/lang/String;)V+2
+j  clojure.core$load$fn__6839.invoke()Ljava/lang/Object;+17
+j  clojure.core$load.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+531
+j  clojure.core$load.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.invoke(Ljava/lang/Object;)Ljava/lang/Object;+50
+j  clojure.core$load_one.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+13
+j  clojure.core$load_one.invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+9
+j  clojure.core$load_lib$fn__6780.invoke()Ljava/lang/Object;+19
+j  clojure.core$load_lib.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Lclojure/lang/ISeq;)Ljava/lang/Object;+519
+j  clojure.core$load_lib.doInvoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+12
+j  clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+195
+j  clojure.core$apply.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+18
+j  clojure.core$load_libs.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+693
+j  clojure.core$load_libs.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+136
+j  clojure.core$apply.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+18
+j  clojure.core$require.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+12
+j  clojure.core$require.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+90
+j  puppetlabs.puppetserver.cli.subcommand$loading__6721__auto____41206.invoke()Ljava/lang/Object;+71
+j  puppetlabs.puppetserver.cli.subcommand__init.load()V+27
+j  puppetlabs.puppetserver.cli.subcommand__init.<clinit>()V+14
+v  ~StubRoutines::call_stub
+J 559  java.lang.Class.forName0(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class; (0 bytes) @ 0x00007fb46d28677a [0x00007fb46d286700+0x7a]
+J 569 C1 java.lang.Class.forName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (53 bytes) @ 0x00007fb46d296e64 [0x00007fb46d296960+0x504]
+J 570 C1 clojure.lang.RT.classForName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (33 bytes) @ 0x00007fb46d29772c [0x00007fb46d297500+0x22c]
+J 582 C1 clojure.lang.RT.classForName(Ljava/lang/String;)Ljava/lang/Class; (9 bytes) @ 0x00007fb46d29b6c4 [0x00007fb46d29b640+0x84]
+j  clojure.lang.RT.loadClassForName(Ljava/lang/String;)Ljava/lang/Class;+24
+j  clojure.lang.RT.load(Ljava/lang/String;Z)V+224
+j  clojure.lang.RT.load(Ljava/lang/String;)V+2
+j  clojure.core$load$fn__6839.invoke()Ljava/lang/Object;+17
+j  clojure.core$load.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+531
+j  clojure.core$load.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.invoke(Ljava/lang/Object;)Ljava/lang/Object;+50
+j  clojure.core$load_one.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+13
+j  clojure.core$load_one.invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+9
+j  clojure.core$load_lib$fn__6780.invoke()Ljava/lang/Object;+19
+j  clojure.core$load_lib.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Lclojure/lang/ISeq;)Ljava/lang/Object;+519
+j  clojure.core$load_lib.doInvoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+12
+j  clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+195
+j  clojure.core$apply.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+18
+j  clojure.core$load_libs.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+693
+j  clojure.core$load_libs.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+136
+j  clojure.core$apply.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+18
+j  clojure.core$require.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+12
+j  clojure.core$require.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+74
+j  puppetlabs.puppetserver.cli.gem$loading__6721__auto____43733.invoke()Ljava/lang/Object;+68
+j  puppetlabs.puppetserver.cli.gem__init.load()V+27
+j  puppetlabs.puppetserver.cli.gem__init.<clinit>()V+14
+v  ~StubRoutines::call_stub
+J 559  java.lang.Class.forName0(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class; (0 bytes) @ 0x00007fb46d28677a [0x00007fb46d286700+0x7a]
+J 569 C1 java.lang.Class.forName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (53 bytes) @ 0x00007fb46d296e64 [0x00007fb46d296960+0x504]
+J 570 C1 clojure.lang.RT.classForName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class; (33 bytes) @ 0x00007fb46d29772c [0x00007fb46d297500+0x22c]
+J 582 C1 clojure.lang.RT.classForName(Ljava/lang/String;)Ljava/lang/Class; (9 bytes) @ 0x00007fb46d29b6c4 [0x00007fb46d29b640+0x84]
+j  clojure.lang.RT.loadClassForName(Ljava/lang/String;)Ljava/lang/Class;+24
+j  clojure.lang.RT.load(Ljava/lang/String;Z)V+224
+j  clojure.lang.RT.load(Ljava/lang/String;)V+2
+j  clojure.core$load$fn__6839.invoke()Ljava/lang/Object;+17
+j  clojure.core$load.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+531
+j  clojure.core$load.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.invoke(Ljava/lang/Object;)Ljava/lang/Object;+50
+j  clojure.core$load_one.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+13
+j  clojure.core$load_one.invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+9
+j  clojure.core$load_lib$fn__6780.invoke()Ljava/lang/Object;+19
+j  clojure.core$load_lib.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Lclojure/lang/ISeq;)Ljava/lang/Object;+519
+j  clojure.core$load_lib.doInvoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+12
+j  clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+195
+j  clojure.core$apply.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+18
+j  clojure.core$load_libs.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+693
+j  clojure.core$load_libs.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+136
+j  clojure.core$apply.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+18
+j  clojure.core$require.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+12
+j  clojure.main$main_opt.invokeStatic(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+392
+j  clojure.main$main_opt.invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.main$main.invokeStatic(Lclojure/lang/ISeq;)Ljava/lang/Object;+376
+j  clojure.main$main.doInvoke(Ljava/lang/Object;)Ljava/lang/Object;+6
+j  clojure.lang.RestFn.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+136
+j  clojure.lang.Var.applyTo(Lclojure/lang/ISeq;)Ljava/lang/Object;+5
+j  clojure.main.main([Ljava/lang/String;)V+20
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007fb47c120800 JavaThread "Service Thread" daemon [_thread_blocked, id=20843, stack(0x00007fb467afb000,0x00007fb467bfc000)]
+  0x00007fb47c115800 JavaThread "C1 CompilerThread1" daemon [_thread_in_vm, id=20842, stack(0x00007fb467bfd000,0x00007fb467cfd000)]
+  0x00007fb47c107000 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=20841, stack(0x00007fb467cfe000,0x00007fb467dfe000)]
+  0x00007fb47c104800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=20840, stack(0x00007fb467dfe000,0x00007fb467eff000)]
+  0x00007fb47c0db000 JavaThread "Finalizer" daemon [_thread_blocked, id=20839, stack(0x00007fb467eff000,0x00007fb468000000)]
+  0x00007fb47c0d6800 JavaThread "Reference Handler" daemon [_thread_blocked, id=20838, stack(0x00007fb46c06c000,0x00007fb46c16d000)]
+=>0x00007fb47c04c800 JavaThread "main" [_thread_in_vm, id=20836, stack(0x00007fb483437000,0x00007fb483537000)]
+
+Other Threads:
+  0x00007fb47c0cc800 VMThread [stack: 0x00007fb46c16e000,0x00007fb46c26e000] [id=20837]
+  0x00007fb47c123000 WatcherThread [stack: 0x00007fb4679fb000,0x00007fb467afb000] [id=20844]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fb47c04a140] CompileStatistics_lock - owner thread: 0x00007fb47c115800
+
+heap address: 0x00000000f0a00000, size: 246 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ def new generation   total 4928K, used 2206K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,  38% used [0x00000000f0a00000, 0x00000000f0ba7b60, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff0, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 10870K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  99% used [0x00000000f5c00000, 0x00000000f669d980, 0x00000000f669da00, 0x00000000f66b0000)
+ Metaspace       used 18716K, capacity 18922K, committed 19072K, reserved 1064960K
+  class space    used 3651K, capacity 3705K, committed 3712K, reserved 1048576K
+
+Card table byte_map: [0x00007fb483371000,0x00007fb4833ed000] byte_map_base: 0x00007fb482bec000
+
+Polling page: 0x00007fb483540000
+
+CodeCache: size=245760Kb used=4206Kb max_used=4206Kb free=241553Kb
+ bounds [0x00007fb46d000000, 0x00007fb46d420000, 0x00007fb47c000000]
+ total_blobs=1542 nmethods=1170 adapters=286
+ compilation: enabled
+
+Compilation events (250 events):
+Event: 3.348 Thread 0x00007fb47c115800 1047       1       clojure.lang.PersistentTreeMap$BlackBranch::right (5 bytes)
+Event: 3.348 Thread 0x00007fb47c115800 nmethod 1047 0x00007fb46d3d9c10 code [0x00007fb46d3d9d60, 0x00007fb46d3d9e70]
+Event: 3.354 Thread 0x00007fb47c107000 1048       4       clojure.core$ns_publics$fn__6189::invoke (84 bytes)
+Event: 3.364 Thread 0x00007fb47c107000 nmethod 1048 0x00007fb46d3de690 code [0x00007fb46d3de860, 0x00007fb46d3deff8]
+Event: 3.373 Thread 0x00007fb47c115800 1049       3       java.util.regex.Pattern::append (39 bytes)
+Event: 3.374 Thread 0x00007fb47c115800 nmethod 1049 0x00007fb46d3d9610 code [0x00007fb46d3d9780, 0x00007fb46d3d9ac8]
+Event: 3.376 Thread 0x00007fb47c115800 1050       3       java.util.ArrayList$Itr::hasNext (20 bytes)
+Event: 3.377 Thread 0x00007fb47c115800 nmethod 1050 0x00007fb46d3de290 code [0x00007fb46d3de400, 0x00007fb46d3de5d0]
+Event: 3.377 Thread 0x00007fb47c115800 1051       3       clojure.lang.ChunkedCons::next (39 bytes)
+Event: 3.377 Thread 0x00007fb47c115800 nmethod 1051 0x00007fb46d3dd4d0 code [0x00007fb46d3dd6a0, 0x00007fb46d3ddf28]
+Event: 3.384 Thread 0x00007fb47c107000 1052       4       clojure.lang.RT::first (35 bytes)
+Event: 3.385 Thread 0x00007fb47c107000 nmethod 1052 0x00007fb46d3dbc50 code [0x00007fb46d3dbda0, 0x00007fb46d3dbec8]
+Event: 3.386 Thread 0x00007fb47c107000 1053       4       clojure.lang.ATransientMap::assoc (11 bytes)
+Event: 3.390 Thread 0x00007fb47c115800 1054       3       clojure.lang.ArrayChunk::dropFirst (43 bytes)
+Event: 3.390 Thread 0x00007fb47c115800 nmethod 1054 0x00007fb46d3db590 code [0x00007fb46d3db720, 0x00007fb46d3dbac8]
+Event: 3.391 Thread 0x00007fb47c115800 1055       1       java.util.concurrent.locks.ReentrantReadWriteLock::readLock (5 bytes)
+Event: 3.391 Thread 0x00007fb47c115800 nmethod 1055 0x00007fb46d3d9310 code [0x00007fb46d3d9460, 0x00007fb46d3d9570]
+Event: 3.393 Thread 0x00007fb47c107000 nmethod 1053 0x00007fb46d3e0090 code [0x00007fb46d3e0280, 0x00007fb46d3e08a0]
+Event: 3.398 Thread 0x00007fb47c107000 1056       4       java.lang.ref.ReferenceQueue::reallyPoll (65 bytes)
+Event: 3.399 Thread 0x00007fb47c107000 nmethod 1056 0x00007fb46d3e1250 code [0x00007fb46d3e13a0, 0x00007fb46d3e14d8]
+Event: 3.400 Thread 0x00007fb47c107000 1057       4       clojure.lang.PersistentHashMap$NodeSeq::first (41 bytes)
+Event: 3.402 Thread 0x00007fb47c107000 nmethod 1057 0x00007fb46d3df990 code [0x00007fb46d3dfb20, 0x00007fb46d3dfe08]
+Event: 3.403 Thread 0x00007fb47c115800 1058       1       clojure.core$conj__5390::getRequiredArity (2 bytes)
+Event: 3.403 Thread 0x00007fb47c115800 nmethod 1058 0x00007fb46d3db2d0 code [0x00007fb46d3db420, 0x00007fb46d3db530]
+Event: 3.405 Thread 0x00007fb47c107000 1059   !   4       java.lang.ref.Finalizer::add (41 bytes)
+Event: 3.406 Thread 0x00007fb47c107000 nmethod 1059 0x00007fb46d3dae10 code [0x00007fb46d3daf60, 0x00007fb46d3db1f8]
+Event: 3.410 Thread 0x00007fb47c107000 1060       4       java.lang.ref.Finalizer::register (10 bytes)
+Event: 3.412 Thread 0x00007fb47c107000 nmethod 1060 0x00007fb46d3e2710 code [0x00007fb46d3e2880, 0x00007fb46d3e2bd8]
+Event: 3.412 Thread 0x00007fb47c107000 1061       4       clojure.lang.Cons::next (10 bytes)
+Event: 3.413 Thread 0x00007fb47c107000 nmethod 1061 0x00007fb46d3e2d10 code [0x00007fb46d3e2e60, 0x00007fb46d3e2ef8]
+Event: 3.434 Thread 0x00007fb47c115800 1062       3       java.util.AbstractMap::<init> (5 bytes)
+Event: 3.434 Thread 0x00007fb47c115800 nmethod 1062 0x00007fb46d3e2150 code [0x00007fb46d3e22c0, 0x00007fb46d3e2470]
+Event: 3.445 Thread 0x00007fb47c115800 1063       1       clojure.lang.PersistentList$Primordial::getRequiredArity (2 bytes)
+Event: 3.445 Thread 0x00007fb47c115800 nmethod 1063 0x00007fb46d3e1e90 code [0x00007fb46d3e1fe0, 0x00007fb46d3e20f0]
+Event: 3.468 Thread 0x00007fb47c107000 1064       4       java.lang.Character::toLowerCase (6 bytes)
+Event: 3.469 Thread 0x00007fb47c107000 nmethod 1064 0x00007fb46d3e18d0 code [0x00007fb46d3e1a20, 0x00007fb46d3e1af8]
+Event: 3.469 Thread 0x00007fb47c115800 1065       3       java.nio.ByteBuffer::arrayOffset (35 bytes)
+Event: 3.469 Thread 0x00007fb47c115800 nmethod 1065 0x00007fb46d3dcf10 code [0x00007fb46d3dd0a0, 0x00007fb46d3dd398]
+Event: 3.471 Thread 0x00007fb47c115800 1066       3       java.nio.CharBuffer::arrayOffset (35 bytes)
+Event: 3.471 Thread 0x00007fb47c115800 nmethod 1066 0x00007fb46d3dc950 code [0x00007fb46d3dcae0, 0x00007fb46d3dcdd8]
+Event: 3.471 Thread 0x00007fb47c115800 1067       3       java.io.BufferedReader::ensureOpen (18 bytes)
+Event: 3.471 Thread 0x00007fb47c115800 nmethod 1067 0x00007fb46d3dc4d0 code [0x00007fb46d3dc640, 0x00007fb46d3dc888]
+Event: 3.472 Thread 0x00007fb47c115800 1068       3       java.util.regex.Pattern$CharProperty::match (56 bytes)
+Event: 3.472 Thread 0x00007fb47c115800 nmethod 1068 0x00007fb46d3e5750 code [0x00007fb46d3e5900, 0x00007fb46d3e5de8]
+Event: 3.485 Thread 0x00007fb47c115800 1069       3       java.lang.String::indexOf (166 bytes)
+Event: 3.485 Thread 0x00007fb47c115800 nmethod 1069 0x00007fb46d3e4b90 code [0x00007fb46d3e4d40, 0x00007fb46d3e5390]
+Event: 3.485 Thread 0x00007fb47c107000 1070  s    4       sun.misc.PerfCounter::add (18 bytes)
+Event: 3.487 Thread 0x00007fb47c107000 nmethod 1070 0x00007fb46d3dbfd0 code [0x00007fb46d3dc120, 0x00007fb46d3dc378]
+Event: 3.487 Thread 0x00007fb47c107000 1071  s    4       sun.misc.PerfCounter::get (9 bytes)
+Event: 3.488 Thread 0x00007fb47c107000 nmethod 1071 0x00007fb46d3e7890 code [0x00007fb46d3e79e0, 0x00007fb46d3e7c18]
+Event: 3.496 Thread 0x00007fb47c107000 1072   !   4       java.net.URLClassLoader$1::run (63 bytes)
+Event: 3.511 Thread 0x00007fb47c115800 1074       2       java.lang.ClassLoader::findLoadedClass (16 bytes)
+Event: 3.511 Thread 0x00007fb47c115800 nmethod 1074 0x00007fb46d3e4590 code [0x00007fb46d3e4700, 0x00007fb46d3e48b8]
+Event: 3.512 Thread 0x00007fb47c115800 1075       3       java.lang.ClassLoader::getClassLoadingLock (35 bytes)
+Event: 3.512 Thread 0x00007fb47c115800 nmethod 1075 0x00007fb46d3e3ed0 code [0x00007fb46d3e4060, 0x00007fb46d3e4428]
+Event: 3.512 Thread 0x00007fb47c115800 1076   !   3       java.lang.ClassLoader::loadClass (122 bytes)
+Event: 3.513 Thread 0x00007fb47c115800 nmethod 1076 0x00007fb46d3e7d10 code [0x00007fb46d3e8080, 0x00007fb46d3ea318]
+Event: 3.525 Thread 0x00007fb47c115800 1077       3       java.util.regex.Matcher::reset (83 bytes)
+Event: 3.526 Thread 0x00007fb47c115800 nmethod 1077 0x00007fb46d3e3490 code [0x00007fb46d3e3620, 0x00007fb46d3e3ac8]
+Event: 3.526 Thread 0x00007fb47c115800 1078       3       java.util.regex.Pattern$GroupHead::match (47 bytes)
+Event: 3.526 Thread 0x00007fb47c115800 nmethod 1078 0x00007fb46d3ebb10 code [0x00007fb46d3ebc80, 0x00007fb46d3ebf28]
+Event: 3.526 Thread 0x00007fb47c115800 1079       1       java.lang.AbstractStringBuilder::length (5 bytes)
+Event: 3.526 Thread 0x00007fb47c115800 nmethod 1079 0x00007fb46d3e31d0 code [0x00007fb46d3e3320, 0x00007fb46d3e3430]
+Event: 3.526 Thread 0x00007fb47c115800 1080       3       clojure.core$concat::invokeStatic (24 bytes)
+Event: 3.527 Thread 0x00007fb47c115800 nmethod 1080 0x00007fb46d3ec110 code [0x00007fb46d3ec2a0, 0x00007fb46d3ec750]
+Event: 3.527 Thread 0x00007fb47c115800 1081       3       java.lang.Character::hashCode (8 bytes)
+Event: 3.527 Thread 0x00007fb47c115800 nmethod 1081 0x00007fb46d3eca10 code [0x00007fb46d3ecb80, 0x00007fb46d3ecd30]
+Event: 3.535 Thread 0x00007fb47c115800 1082       3       sun.reflect.ReflectionFactory::langReflectAccess (15 bytes)
+Event: 3.535 Thread 0x00007fb47c115800 nmethod 1082 0x00007fb46d3ecfd0 code [0x00007fb46d3ed140, 0x00007fb46d3ed350]
+Event: 3.535 Thread 0x00007fb47c115800 1083       3       java.lang.reflect.AccessibleObject::<init> (5 bytes)
+Event: 3.535 Thread 0x00007fb47c115800 nmethod 1083 0x00007fb46d3ed3d0 code [0x00007fb46d3ed540, 0x00007fb46d3ed6f0]
+Event: 3.535 Thread 0x00007fb47c115800 1084       3       sun.reflect.ReflectionFactory::copyField (10 bytes)
+Event: 3.535 Thread 0x00007fb47c115800 nmethod 1084 0x00007fb46d3ed790 code [0x00007fb46d3ed920, 0x00007fb46d3edd08]
+Event: 3.535 Thread 0x00007fb47c115800 1085       3       java.lang.reflect.Field::<init> (44 bytes)
+Event: 3.536 Thread 0x00007fb47c115800 nmethod 1085 0x00007fb46d3eded0 code [0x00007fb46d3ee040, 0x00007fb46d3ee2d0]
+Event: 3.538 Thread 0x00007fb47c115800 1086       1       java.lang.reflect.Field::getName (5 bytes)
+Event: 3.538 Thread 0x00007fb47c115800 nmethod 1086 0x00007fb46d3ee3d0 code [0x00007fb46d3ee520, 0x00007fb46d3ee630]
+Event: 3.542 Thread 0x00007fb47c115800 1090       3       java.lang.Class::arrayContentsEq (70 bytes)
+Event: 3.542 Thread 0x00007fb47c115800 nmethod 1090 0x00007fb46d3ee690 code [0x00007fb46d3ee820, 0x00007fb46d3eec50]
+Event: 3.542 Thread 0x00007fb47c115800 1091       3       java.lang.reflect.ReflectAccess::copyMethod (5 bytes)
+Event: 3.542 Thread 0x00007fb47c115800 nmethod 1091 0x00007fb46d3eedd0 code [0x00007fb46d3eef40, 0x00007fb46d3ef148]
+Event: 3.542 Thread 0x00007fb47c115800 1092       3       java.lang.reflect.Method::copy (84 bytes)
+Event: 3.542 Thread 0x00007fb47c115800 nmethod 1092 0x00007fb46d3ef210 code [0x00007fb46d3ef3a0, 0x00007fb46d3ef758]
+Event: 3.542 Thread 0x00007fb47c115800 1088       3       java.lang.reflect.Executable::<init> (5 bytes)
+Event: 3.543 Thread 0x00007fb47c115800 nmethod 1088 0x00007fb46d3ef850 code [0x00007fb46d3ef9c0, 0x00007fb46d3efbd0]
+Event: 3.543 Thread 0x00007fb47c115800 1089       3       sun.reflect.ReflectionFactory::copyMethod (10 bytes)
+Event: 3.543 Thread 0x00007fb47c115800 nmethod 1089 0x00007fb46d3efcd0 code [0x00007fb46d3efe60, 0x00007fb46d3f0228]
+Event: 3.543 Thread 0x00007fb47c115800 1094       3       java.lang.reflect.Method::<init> (68 bytes)
+Event: 3.543 Thread 0x00007fb47c115800 nmethod 1094 0x00007fb46d3f03d0 code [0x00007fb46d3f0540, 0x00007fb46d3f0890]
+Event: 3.543 Thread 0x00007fb47c115800 1095       1       java.util.Formatter$Flags::valueOf (5 bytes)
+Event: 3.543 Thread 0x00007fb47c115800 nmethod 1095 0x00007fb46d3f0a10 code [0x00007fb46d3f0b60, 0x00007fb46d3f0c70]
+Event: 3.544 Thread 0x00007fb47c115800 1096       3       clojure.asm.SymbolTable::hash (10 bytes)
+Event: 3.544 Thread 0x00007fb47c115800 nmethod 1096 0x00007fb46d3f0cd0 code [0x00007fb46d3f0e40, 0x00007fb46d3f1048]
+Event: 3.550 Thread 0x00007fb47c115800 1097       3       clojure.asm.ByteVector::putUTF8 (142 bytes)
+Event: 3.550 Thread 0x00007fb47c115800 nmethod 1097 0x00007fb46d3f1110 code [0x00007fb46d3f1300, 0x00007fb46d3f1b98]
+Event: 3.551 Thread 0x00007fb47c115800 1098       3       clojure.asm.SymbolTable::get (13 bytes)
+Event: 3.551 Thread 0x00007fb47c115800 nmethod 1098 0x00007fb46d3f2090 code [0x00007fb46d3f2200, 0x00007fb46d3f2390]
+Event: 3.551 Thread 0x00007fb47c115800 1099       3       clojure.asm.Symbol::<init> (38 bytes)
+Event: 3.551 Thread 0x00007fb47c115800 nmethod 1099 0x00007fb46d3f2490 code [0x00007fb46d3f2600, 0x00007fb46d3f2810]
+Event: 3.554 Thread 0x00007fb47c115800 1102       3       clojure.lang.PersistentHashMap::hash (5 bytes)
+Event: 3.554 Thread 0x00007fb47c115800 nmethod 1102 0x00007fb46d3f28d0 code [0x00007fb46d3f2a40, 0x00007fb46d3f2ba8]
+Event: 3.554 Thread 0x00007fb47c115800 1101       3       clojure.asm.ByteVector::putShort (52 bytes)
+Event: 3.554 Thread 0x00007fb47c115800 nmethod 1101 0x00007fb46d3f2c50 code [0x00007fb46d3f2dc0, 0x00007fb46d3f3008]
+Event: 3.554 Thread 0x00007fb47c115800 1100       3       clojure.asm.SymbolTable::put (150 bytes)
+Event: 3.554 Thread 0x00007fb47c115800 nmethod 1100 0x00007fb46d3f3190 code [0x00007fb46d3f3340, 0x00007fb46d3f3a70]
+Event: 3.556 Thread 0x00007fb47c115800 1106       2       clojure.lang.RT::second (8 bytes)
+Event: 3.556 Thread 0x00007fb47c115800 nmethod 1106 0x00007fb46d3f3e90 code [0x00007fb46d3f4060, 0x00007fb46d3f43f8]
+Event: 3.557 Thread 0x00007fb47c115800 1107       2       java.lang.Class$MethodArray::addIfNotPresent (47 bytes)
+Event: 3.557 Thread 0x00007fb47c115800 nmethod 1107 0x00007fb46d3f4590 code [0x00007fb46d3f4720, 0x00007fb46d3f4978]
+Event: 3.557 Thread 0x00007fb47c115800 1108       1       java.lang.Class$MethodArray::get (7 bytes)
+Event: 3.557 Thread 0x00007fb47c115800 nmethod 1108 0x00007fb46d3f4b10 code [0x00007fb46d3f4c60, 0x00007fb46d3f4d90]
+Event: 3.562 Thread 0x00007fb47c115800 1109       2       clojure.lang.Var$Frame::<init> (15 bytes)
+Event: 3.562 Thread 0x00007fb47c115800 nmethod 1109 0x00007fb46d3f4e50 code [0x00007fb46d3f4fa0, 0x00007fb46d3f5110]
+Event: 3.562 Thread 0x00007fb47c115800 1110       2       clojure.core$meta__5418::invokeStatic (24 bytes)
+Event: 3.562 Thread 0x00007fb47c115800 nmethod 1110 0x00007fb46d3f5190 code [0x00007fb46d3f5300, 0x00007fb46d3f5528]
+Event: 3.562 Thread 0x00007fb47c115800 1111       2       clojure.lang.Var::pushThreadBindings (168 bytes)
+Event: 3.563 Thread 0x00007fb47c115800 nmethod 1111 0x00007fb46d3f55d0 code [0x00007fb46d3f5860, 0x00007fb46d3f63e8]
+Event: 3.564 Thread 0x00007fb47c115800 1112       2       clojure.asm.SymbolTable$Entry::<init> (17 bytes)
+Event: 3.564 Thread 0x00007fb47c115800 nmethod 1112 0x00007fb46d3f6e50 code [0x00007fb46d3f6fc0, 0x00007fb46d3f7168]
+Event: 3.570 Thread 0x00007fb47c115800 1113       2       clojure.asm.ByteVector::putByte (39 bytes)
+Event: 3.570 Thread 0x00007fb47c115800 nmethod 1113 0x00007fb46d3f7210 code [0x00007fb46d3f7380, 0x00007fb46d3f7568]
+Event: 3.571 Thread 0x00007fb47c115800 1114       2       java.util.regex.Pattern$BitClass::isSatisfiedBy (22 bytes)
+Event: 3.572 Thread 0x00007fb47c115800 nmethod 1114 0x00007fb46d3f7690 code [0x00007fb46d3f7800, 0x00007fb46d3f7990]
+Event: 3.572 Thread 0x00007fb47c115800 1115       2       clojure.asm.Type::appendDescriptor (234 bytes)
+Event: 3.573 Thread 0x00007fb47c115800 nmethod 1115 0x00007fb46d3f7a90 code [0x00007fb46d3f7d40, 0x00007fb46d3f8cd8]
+Event: 3.577 Thread 0x00007fb47c115800 1117       2       clojure.asm.SymbolTable::addConstantUtf8 (98 bytes)
+Event: 3.577 Thread 0x00007fb47c115800 nmethod 1117 0x00007fb46d3fa150 code [0x00007fb46d3fa320, 0x00007fb46d3fa758]
+Event: 3.577 Thread 0x00007fb47c115800 1118       2       clojure.asm.Frame::execute (2305 bytes)
+Event: 3.580 Thread 0x00007fb47c115800 nmethod 1118 0x00007fb46d3faad0 code [0x00007fb46d3fb4e0, 0x00007fb46d3fe2d8]
+Event: 3.591 Thread 0x00007fb47c115800 1119       2       clojure.lang.RestFn::invoke (73 bytes)
+Event: 3.591 Thread 0x00007fb47c115800 nmethod 1119 0x00007fb46d401090 code [0x00007fb46d401240, 0x00007fb46d401708]
+Event: 3.600 Thread 0x00007fb47c115800 1120       2       java.lang.Character::codePointAt (51 bytes)
+Event: 3.600 Thread 0x00007fb47c115800 nmethod 1120 0x00007fb46d401990 code [0x00007fb46d401b20, 0x00007fb46d401d88]
+Event: 3.600 Thread 0x00007fb47c115800 1122       2       java.util.regex.Pattern$Node::match (27 bytes)
+Event: 3.600 Thread 0x00007fb47c115800 nmethod 1122 0x00007fb46d401e50 code [0x00007fb46d401fc0, 0x00007fb46d402170]
+Event: 3.600 Thread 0x00007fb47c115800 1121       2       java.io.PushbackReader::ensureOpen (18 bytes)
+Event: 3.600 Thread 0x00007fb47c115800 nmethod 1121 0x00007fb46d402290 code [0x00007fb46d402400, 0x00007fb46d402608]
+Event: 3.600 Thread 0x00007fb47c115800 1123   !   2       clojure.lang.LispReader::read1 (11 bytes)
+Event: 3.600 Thread 0x00007fb47c115800 nmethod 1123 0x00007fb46d4026d0 code [0x00007fb46d402840, 0x00007fb46d402a58]
+Event: 3.600 Thread 0x00007fb47c115800 1124       2       clojure.lang.LineNumberingPushbackReader::read (76 bytes)
+Event: 3.601 Thread 0x00007fb47c115800 nmethod 1124 0x00007fb46d402b90 code [0x00007fb46d402d20, 0x00007fb46d403108]
+Event: 3.601 Thread 0x00007fb47c115800 1125       2       clojure.core$concat$cat__5495::invoke (25 bytes)
+Event: 3.601 Thread 0x00007fb47c115800 nmethod 1125 0x00007fb46d403410 code [0x00007fb46d403580, 0x00007fb46d4037d0]
+Event: 3.602 Thread 0x00007fb47c115800 1126       2       clojure.core$concat$cat__5495$fn__5496::<init> (20 bytes)
+Event: 3.602 Thread 0x00007fb47c115800 nmethod 1126 0x00007fb46d403890 code [0x00007fb46d4039e0, 0x00007fb46d403b70]
+Event: 3.657 Thread 0x00007fb47c115800 1127       2       java.lang.Character::toLowerCase (9 bytes)
+Event: 3.662 Thread 0x00007fb47c115800 nmethod 1127 0x00007fb46d404410 code [0x00007fb46d404580, 0x00007fb46d4046f8]
+Event: 3.662 Thread 0x00007fb47c115800 1128       1       sun.util.locale.BaseLocale::getLanguage (5 bytes)
+Event: 3.662 Thread 0x00007fb47c115800 nmethod 1128 0x00007fb46d404790 code [0x00007fb46d4048e0, 0x00007fb46d4049f0]
+Event: 3.665 Thread 0x00007fb47c115800 1129       2       sun.misc.FDBigInteger::mult (64 bytes)
+Event: 3.665 Thread 0x00007fb47c115800 nmethod 1129 0x00007fb46d404e50 code [0x00007fb46d404fc0, 0x00007fb46d405210]
+Event: 3.665 Thread 0x00007fb47c115800 1130       2       sun.misc.FDBigInteger::<init> (30 bytes)
+Event: 3.665 Thread 0x00007fb47c115800 nmethod 1130 0x00007fb46d4054d0 code [0x00007fb46d405640, 0x00007fb46d4057e8]
+Event: 3.685 Thread 0x00007fb47c115800 1131       2       java.lang.String::toLowerCase (439 bytes)
+Event: 3.686 Thread 0x00007fb47c115800 nmethod 1131 0x00007fb46d4058d0 code [0x00007fb46d405b60, 0x00007fb46d406718]
+Event: 3.692 Thread 0x00007fb47c115800 1132  s    2       java.util.Hashtable::put (104 bytes)
+Event: 3.693 Thread 0x00007fb47c115800 nmethod 1132 0x00007fb46d407290 code [0x00007fb46d407440, 0x00007fb46d407998]
+Event: 3.693 Thread 0x00007fb47c115800 1133       2       java.util.Hashtable::addEntry (87 bytes)
+Event: 3.693 Thread 0x00007fb47c115800 nmethod 1133 0x00007fb46d407c90 code [0x00007fb46d407e20, 0x00007fb46d408198]
+Event: 3.696 Thread 0x00007fb47c115800 1134       1       java.util.LinkedHashMap::removeEldestEntry (2 bytes)
+Event: 3.696 Thread 0x00007fb47c115800 nmethod 1134 0x00007fb46d4083d0 code [0x00007fb46d408520, 0x00007fb46d408630]
+Event: 3.697 Thread 0x00007fb47c115800 1137       1       java.util.HashMap$Node::getValue (5 bytes)
+Event: 3.697 Thread 0x00007fb47c115800 nmethod 1137 0x00007fb46d408a10 code [0x00007fb46d408b60, 0x00007fb46d408c70]
+Event: 3.697 Thread 0x00007fb47c115800 1136       1       java.util.HashMap$Node::getKey (5 bytes)
+Event: 3.697 Thread 0x00007fb47c115800 nmethod 1136 0x00007fb46d408cd0 code [0x00007fb46d408e20, 0x00007fb46d408f30]
+Event: 3.708 Thread 0x00007fb47c115800 1138       2       java.io.FilterReader::read (8 bytes)
+Event: 3.708 Thread 0x00007fb47c115800 nmethod 1138 0x00007fb46d408f90 code [0x00007fb46d409100, 0x00007fb46d409288]
+Event: 3.710 Thread 0x00007fb47c115800 1141       2       clojure.lang.LispReader::isWhitespace (19 bytes)
+Event: 3.710 Thread 0x00007fb47c115800 nmethod 1141 0x00007fb46d409310 code [0x00007fb46d409480, 0x00007fb46d409638]
+Event: 3.710 Thread 0x00007fb47c115800 1142       2       java.lang.Character::isWhitespace (9 bytes)
+Event: 3.710 Thread 0x00007fb47c115800 nmethod 1142 0x00007fb46d409710 code [0x00007fb46d409880, 0x00007fb46d4099f8]
+Event: 3.710 Thread 0x00007fb47c115800 1143       2       java.lang.CharacterDataLatin1::isWhitespace (23 bytes)
+Event: 3.710 Thread 0x00007fb47c115800 nmethod 1143 0x00007fb46d409a90 code [0x00007fb46d409c00, 0x00007fb46d409d90]
+Event: 3.710 Thread 0x00007fb47c115800 1144   !   2       java.io.PushbackReader::read (54 bytes)
+Event: 3.710 Thread 0x00007fb47c115800 nmethod 1144 0x00007fb46d409ed0 code [0x00007fb46d40a060, 0x00007fb46d40a4b8]
+Event: 3.710 Thread 0x00007fb47c115800 1139   !   2       java.io.LineNumberReader::read (93 bytes)
+Event: 3.711 Thread 0x00007fb47c115800 nmethod 1139 0x00007fb46d40a790 code [0x00007fb46d40a920, 0x00007fb46d40acf8]
+Event: 3.711 Thread 0x00007fb47c115800 1140   !   2       java.io.BufferedReader::read (104 bytes)
+Event: 3.711 Thread 0x00007fb47c115800 nmethod 1140 0x00007fb46d40ae50 code [0x00007fb46d40b000, 0x00007fb46d40b518]
+Event: 3.718 Thread 0x00007fb47c115800 1146       2       clojure.core$concat$fn__5493::invoke (110 bytes)
+Event: 3.718 Thread 0x00007fb47c115800 nmethod 1146 0x00007fb46d40b950 code [0x00007fb46d40bb40, 0x00007fb46d40c168]
+Event: 3.722 Thread 0x00007fb47c115800 1150       2       clojure.lang.RT::next (35 bytes)
+Event: 3.722 Thread 0x00007fb47c115800 nmethod 1150 0x00007fb46d40c450 code [0x00007fb46d40c600, 0x00007fb46d40c978]
+Event: 3.722 Thread 0x00007fb47c115800 1147       2       clojure.lang.PersistentVector::<init> (32 bytes)
+Event: 3.722 Thread 0x00007fb47c115800 nmethod 1147 0x00007fb46d40cb10 code [0x00007fb46d40cc60, 0x00007fb46d40cdf0]
+Event: 3.722 Thread 0x00007fb47c115800 1149       2       clojure.lang.RT::meta (19 bytes)
+Event: 3.722 Thread 0x00007fb47c115800 nmethod 1149 0x00007fb46d40ce90 code [0x00007fb46d40d000, 0x00007fb46d40d228]
+Event: 3.722 Thread 0x00007fb47c115800 1148       2       clojure.core$conj_BANG_::invokeStatic (15 bytes)
+Event: 3.722 Thread 0x00007fb47c115800 nmethod 1148 0x00007fb46d40d2d0 code [0x00007fb46d40d440, 0x00007fb46d40d5e8]
+Event: 3.727 Thread 0x00007fb47c115800 1152       2       java.util.regex.Pattern$Branch::match (66 bytes)
+Event: 3.728 Thread 0x00007fb47c115800 nmethod 1152 0x00007fb46d40d690 code [0x00007fb46d40d820, 0x00007fb46d40daf8]
+Event: 3.728 Thread 0x00007fb47c115800 1153       2       java.util.regex.Pattern$CharProperty$1::isSatisfiedBy (17 bytes)
+Event: 3.728 Thread 0x00007fb47c115800 nmethod 1153 0x00007fb46d40dcd0 code [0x00007fb46d40de40, 0x00007fb46d40dfc8]
+Event: 3.728 Thread 0x00007fb47c115800 1151       2       clojure.lang.PersistentVector::cons (210 bytes)
+Event: 3.729 Thread 0x00007fb47c115800 nmethod 1151 0x00007fb46d40e050 code [0x00007fb46d40e220, 0x00007fb46d40eee8]
+Event: 3.729 Thread 0x00007fb47c115800 1154       1       clojure.lang.PersistentList::count (5 bytes)
+Event: 3.729 Thread 0x00007fb47c115800 nmethod 1154 0x00007fb46d40f5d0 code [0x00007fb46d40f720, 0x00007fb46d40f830]
+Event: 3.729 Thread 0x00007fb47c115800 1155       1       clojure.asm.commons.Method::getDescriptor (5 bytes)
+Event: 3.729 Thread 0x00007fb47c115800 nmethod 1155 0x00007fb46d40f890 code [0x00007fb46d40f9e0, 0x00007fb46d40faf0]
+Event: 3.729 Thread 0x00007fb47c115800 1156       1       clojure.asm.commons.Method::getName (5 bytes)
+Event: 3.729 Thread 0x00007fb47c115800 nmethod 1156 0x00007fb46d40fb50 code [0x00007fb46d40fca0, 0x00007fb46d40fdb0]
+Event: 3.738 Thread 0x00007fb47c115800 1157       1       java.util.LinkedList::size (5 bytes)
+Event: 3.738 Thread 0x00007fb47c115800 nmethod 1157 0x00007fb46d40fe10 code [0x00007fb46d40ff60, 0x00007fb46d410070]
+Event: 3.738 Thread 0x00007fb47c115800 1158       2       clojure.core$the_ns::invokeStatic (75 bytes)
+Event: 3.739 Thread 0x00007fb47c115800 nmethod 1158 0x00007fb46d4100d0 code [0x00007fb46d4102a0, 0x00007fb46d410978]
+Event: 3.740 Thread 0x00007fb47c115800 1159       2       java.util.regex.Pattern$Curly::match (86 bytes)
+Event: 3.740 Thread 0x00007fb47c115800 nmethod 1159 0x00007fb46d410e10 code [0x00007fb46d410fa0, 0x00007fb46d411278]
+Event: 3.740 Thread 0x00007fb47c115800 1160       2       java.lang.StringBuilder::length (5 bytes)
+Event: 3.740 Thread 0x00007fb47c115800 nmethod 1160 0x00007fb46d411410 code [0x00007fb46d411560, 0x00007fb46d4116b0]
+Event: 3.741 Thread 0x00007fb47c115800 1161  s    2       clojure.lang.DynamicClassLoader::loadClass (37 bytes)
+Event: 3.741 Thread 0x00007fb47c115800 nmethod 1161 0x00007fb46d411710 code [0x00007fb46d4118c0, 0x00007fb46d411c88]
+Event: 3.741 Thread 0x00007fb47c115800 1162       2       clojure.lang.PersistentVector::cons (6 bytes)
+Event: 3.741 Thread 0x00007fb47c115800 nmethod 1162 0x00007fb46d411e50 code [0x00007fb46d411fc0, 0x00007fb46d412128]
+Event: 3.743 Thread 0x00007fb47c115800 1163       2       clojure.lang.LispReader::isTerminatingMacro (31 bytes)
+Event: 3.743 Thread 0x00007fb47c115800 nmethod 1163 0x00007fb46d4121d0 code [0x00007fb46d412340, 0x00007fb46d412510]
+Event: 3.743 Thread 0x00007fb47c115800 1164       2       clojure.lang.RT::contains (278 bytes)
+Event: 3.930 Thread 0x00007fb47c115800 nmethod 1164 0x00007fb46d4125d0 code [0x00007fb46d412880, 0x00007fb46d4135a8]
+Event: 3.943 Thread 0x00007fb47c115800 1166       2       clojure.lang.PersistentList$Primordial::doInvoke (102 bytes)
+Event: 3.946 Thread 0x00007fb47c115800 nmethod 1166 0x00007fb46d413bd0 code [0x00007fb46d413dc0, 0x00007fb46d4143a8]
+Event: 3.946 Thread 0x00007fb47c115800 1167       2       java.util.regex.Matcher::groupCount (10 bytes)
+Event: 3.946 Thread 0x00007fb47c115800 nmethod 1167 0x00007fb46d414790 code [0x00007fb46d4148e0, 0x00007fb46d414a30]
+Event: 3.946 Thread 0x00007fb47c115800 1165       2       clojure.core$concat$cat__5495$fn__5496::invoke (171 bytes)
+Event: 3.946 Thread 0x00007fb47c115800 nmethod 1165 0x00007fb46d414ad0 code [0x00007fb46d414d00, 0x00007fb46d415358]
+Event: 3.949 Thread 0x00007fb47c115800 1168       2       java.util.regex.Pattern$Ctype::isSatisfiedBy (24 bytes)
+Event: 3.949 Thread 0x00007fb47c115800 nmethod 1168 0x00007fb46d415690 code [0x00007fb46d415800, 0x00007fb46d4159d0]
+Event: 3.949 Thread 0x00007fb47c115800 1169       2       java.util.regex.Pattern$Dot::isSatisfiedBy (34 bytes)
+Event: 3.949 Thread 0x00007fb47c115800 nmethod 1169 0x00007fb46d415b10 code [0x00007fb46d415c60, 0x00007fb46d415df0]
+Event: 3.949 Thread 0x00007fb47c115800 1170       2       clojure.lang.Compiler::currentNS (10 bytes)
+Event: 3.950 Thread 0x00007fb47c115800 nmethod 1170 0x00007fb46d415e50 code [0x00007fb46d415fc0, 0x00007fb46d416168]
+Event: 3.951 Thread 0x00007fb47c115800 1172       2       clojure.lang.ATransientSet::count (10 bytes)
+Event: 3.951 Thread 0x00007fb47c115800 nmethod 1172 0x00007fb46d416250 code [0x00007fb46d4163c0, 0x00007fb46d416548]
+Event: 3.951 Thread 0x00007fb47c115800 1175       2       clojure.core$distinct_QMARK_::invokeStatic (236 bytes)
+Event: 3.952 Thread 0x00007fb47c115800 nmethod 1175 0x00007fb46d4165d0 code [0x00007fb46d4167e0, 0x00007fb46d416e78]
+Event: 3.952 Thread 0x00007fb47c115800 1173       2       clojure.core$not_EQ_::invokeStatic (25 bytes)
+Event: 3.952 Thread 0x00007fb47c115800 nmethod 1173 0x00007fb46d417550 code [0x00007fb46d4176c0, 0x00007fb46d417868]
+Event: 3.952 Thread 0x00007fb47c115800 1174       2       clojure.core$distinct_QMARK_::doInvoke (16 bytes)
+Event: 3.952 Thread 0x00007fb47c115800 nmethod 1174 0x00007fb46d417910 code [0x00007fb46d417a80, 0x00007fb46d417c48]
+Event: 3.952 Thread 0x00007fb47c115800 1171       2       clojure.lang.Var::set (83 bytes)
+Event: 3.953 Thread 0x00007fb47c115800 nmethod 1171 0x00007fb46d417d10 code [0x00007fb46d417f80, 0x00007fb46d418a78]
+Event: 4.095 Thread 0x00007fb47c115800 1176   !   2       clojure.lang.Compiler::analyze (368 bytes)
+Event: 201.018 Thread 0x00007fb47c115800 nmethod 1176 0x00007fb46d4193d0 code [0x00007fb46d419780, 0x00007fb46d41acc8]
+Event: 202.162 Thread 0x00007fb47c115800 1177       2       clojure.asm.Type::getType (199 bytes)
+Event: 271.477 Thread 0x00007fb47c115800 nmethod 1177 0x00007fb46d41bf10 code [0x00007fb46d41c0c0, 0x00007fb46d41c698]
+Event: 274.657 Thread 0x00007fb47c115800 1178       2       clojure.lang.PersistentList::withMeta (6 bytes)
+Event: 297.459 Thread 0x00007fb47c115800 nmethod 1178 0x00007fb46d41c910 code [0x00007fb46d41ca80, 0x00007fb46d41cc90]
+Event: 300.067 Thread 0x00007fb47c115800 1179       2       clojure.lang.PersistentList::withMeta (31 bytes)
+Event: 325.369 Thread 0x00007fb47c115800 nmethod 1179 0x00007fb46d41cd50 code [0x00007fb46d41cec0, 0x00007fb46d41d0d0]
+Event: 327.363 Thread 0x00007fb47c115800 1181       2       clojure.lang.PersistentHashMap$BitmapIndexedNode::find (90 bytes)
+Event: 351.048 Thread 0x00007fb47c115800 nmethod 1181 0x00007fb46d41d190 code [0x00007fb46d41d320, 0x00007fb46d41d648]
+Event: 352.375 Thread 0x00007fb47c115800 1183       2       java.util.regex.Matcher::group (112 bytes)
+
+GC Heap History (32 events):
+Event: 0.597 GC heap before
+{Heap before GC invocations=0 (full 0):
+ def new generation   total 4928K, used 4401K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,  99% used [0x00000000f0a00000, 0x00000000f0e4c678, 0x00000000f0e50000)
+  from space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 0K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,   0% used [0x00000000f5c00000, 0x00000000f5c00000, 0x00000000f5c00200, 0x00000000f66b0000)
+ Metaspace       used 4320K, capacity 5364K, committed 5632K, reserved 1056768K
+  class space    used 405K, capacity 488K, committed 512K, reserved 1048576K
+Event: 0.599 GC heap after
+Heap after GC invocations=1 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff0, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 537K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,   4% used [0x00000000f5c00000, 0x00000000f5c86548, 0x00000000f5c86600, 0x00000000f66b0000)
+ Metaspace       used 4320K, capacity 5364K, committed 5632K, reserved 1056768K
+  class space    used 405K, capacity 488K, committed 512K, reserved 1048576K
+}
+Event: 0.842 GC heap before
+{Heap before GC invocations=1 (full 0):
+ def new generation   total 4928K, used 4927K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff0, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 537K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,   4% used [0x00000000f5c00000, 0x00000000f5c86548, 0x00000000f5c86600, 0x00000000f66b0000)
+ Metaspace       used 5497K, capacity 6092K, committed 6272K, reserved 1056768K
+  class space    used 513K, capacity 552K, committed 640K, reserved 1048576K
+Event: 0.846 GC heap after
+Heap after GC invocations=2 (full 0):
+ def new generation   total 4928K, used 512K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0e50000, 0x00000000f0ed0000, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 1546K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  14% used [0x00000000f5c00000, 0x00000000f5d82a78, 0x00000000f5d82c00, 0x00000000f66b0000)
+ Metaspace       used 5497K, capacity 6092K, committed 6272K, reserved 1056768K
+  class space    used 513K, capacity 552K, committed 640K, reserved 1048576K
+}
+Event: 1.188 GC heap before
+{Heap before GC invocations=2 (full 0):
+ def new generation   total 4928K, used 4928K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0e50000, 0x00000000f0ed0000, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 1546K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  14% used [0x00000000f5c00000, 0x00000000f5d82a78, 0x00000000f5d82c00, 0x00000000f66b0000)
+ Metaspace       used 7039K, capacity 7468K, committed 7808K, reserved 1056768K
+  class space    used 1014K, capacity 1032K, committed 1152K, reserved 1048576K
+Event: 1.193 GC heap after
+Heap after GC invocations=3 (full 0):
+ def new generation   total 4928K, used 512K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0ed0000, 0x00000000f0f50000, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 2721K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  24% used [0x00000000f5c00000, 0x00000000f5ea8680, 0x00000000f5ea8800, 0x00000000f66b0000)
+ Metaspace       used 7039K, capacity 7468K, committed 7808K, reserved 1056768K
+  class space    used 1014K, capacity 1032K, committed 1152K, reserved 1048576K
+}
+Event: 1.391 GC heap before
+{Heap before GC invocations=3 (full 0):
+ def new generation   total 4928K, used 4928K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0ed0000, 0x00000000f0f50000, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 2721K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  24% used [0x00000000f5c00000, 0x00000000f5ea8680, 0x00000000f5ea8800, 0x00000000f66b0000)
+ Metaspace       used 8420K, capacity 8780K, committed 8960K, reserved 1056768K
+  class space    used 1444K, capacity 1448K, committed 1536K, reserved 1048576K
+Event: 1.396 GC heap after
+Heap after GC invocations=4 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff8, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 3783K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  34% used [0x00000000f5c00000, 0x00000000f5fb1de8, 0x00000000f5fb1e00, 0x00000000f66b0000)
+ Metaspace       used 8420K, capacity 8780K, committed 8960K, reserved 1056768K
+  class space    used 1444K, capacity 1448K, committed 1536K, reserved 1048576K
+}
+Event: 1.577 GC heap before
+{Heap before GC invocations=4 (full 0):
+ def new generation   total 4928K, used 4927K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff8, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 3783K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  34% used [0x00000000f5c00000, 0x00000000f5fb1de8, 0x00000000f5fb1e00, 0x00000000f66b0000)
+ Metaspace       used 9373K, capacity 9588K, committed 9728K, reserved 1056768K
+  class space    used 1638K, capacity 1680K, committed 1792K, reserved 1048576K
+Event: 1.581 GC heap after
+Heap after GC invocations=5 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff0, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 4567K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  41% used [0x00000000f5c00000, 0x00000000f6075f20, 0x00000000f6076000, 0x00000000f66b0000)
+ Metaspace       used 9373K, capacity 9588K, committed 9728K, reserved 1056768K
+  class space    used 1638K, capacity 1680K, committed 1792K, reserved 1048576K
+}
+Event: 1.769 GC heap before
+{Heap before GC invocations=5 (full 0):
+ def new generation   total 4928K, used 4927K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff0, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 4567K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  41% used [0x00000000f5c00000, 0x00000000f6075f20, 0x00000000f6076000, 0x00000000f66b0000)
+ Metaspace       used 9951K, capacity 10132K, committed 10368K, reserved 1058816K
+  class space    used 1818K, capacity 1840K, committed 1920K, reserved 1048576K
+Event: 1.773 GC heap after
+Heap after GC invocations=6 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff0, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 5014K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  45% used [0x00000000f5c00000, 0x00000000f60e5990, 0x00000000f60e5a00, 0x00000000f66b0000)
+ Metaspace       used 9951K, capacity 10132K, committed 10368K, reserved 1058816K
+  class space    used 1818K, capacity 1840K, committed 1920K, reserved 1048576K
+}
+Event: 2.104 GC heap before
+{Heap before GC invocations=6 (full 0):
+ def new generation   total 4928K, used 4927K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff0, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 5014K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  45% used [0x00000000f5c00000, 0x00000000f60e5990, 0x00000000f60e5a00, 0x00000000f66b0000)
+ Metaspace       used 11725K, capacity 11850K, committed 12032K, reserved 1058816K
+  class space    used 2118K, capacity 2177K, committed 2304K, reserved 1048576K
+Event: 2.107 GC heap after
+Heap after GC invocations=7 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff8, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 5529K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  50% used [0x00000000f5c00000, 0x00000000f61664e8, 0x00000000f6166600, 0x00000000f66b0000)
+ Metaspace       used 11725K, capacity 11850K, committed 12032K, reserved 1058816K
+  class space    used 2118K, capacity 2177K, committed 2304K, reserved 1048576K
+}
+Event: 2.169 GC heap before
+{Heap before GC invocations=7 (full 0):
+ def new generation   total 4928K, used 4927K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff8, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 5529K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  50% used [0x00000000f5c00000, 0x00000000f61664e8, 0x00000000f6166600, 0x00000000f66b0000)
+ Metaspace       used 11864K, capacity 11978K, committed 12288K, reserved 1058816K
+  class space    used 2128K, capacity 2177K, committed 2304K, reserved 1048576K
+Event: 2.172 GC heap after
+Heap after GC invocations=8 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff8, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 6000K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  54% used [0x00000000f5c00000, 0x00000000f61dc358, 0x00000000f61dc400, 0x00000000f66b0000)
+ Metaspace       used 11864K, capacity 11978K, committed 12288K, reserved 1058816K
+  class space    used 2128K, capacity 2177K, committed 2304K, reserved 1048576K
+}
+Event: 2.348 GC heap before
+{Heap before GC invocations=8 (full 0):
+ def new generation   total 4928K, used 4927K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff8, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 6000K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  54% used [0x00000000f5c00000, 0x00000000f61dc358, 0x00000000f61dc400, 0x00000000f66b0000)
+ Metaspace       used 12773K, capacity 12938K, committed 13056K, reserved 1060864K
+  class space    used 2431K, capacity 2497K, committed 2560K, reserved 1048576K
+Event: 2.351 GC heap after
+Heap after GC invocations=9 (full 0):
+ def new generation   total 4928K, used 512K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0ed0000, 0x00000000f0f50000, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 6690K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  61% used [0x00000000f5c00000, 0x00000000f6288878, 0x00000000f6288a00, 0x00000000f66b0000)
+ Metaspace       used 12773K, capacity 12938K, committed 13056K, reserved 1060864K
+  class space    used 2431K, capacity 2497K, committed 2560K, reserved 1048576K
+}
+Event: 2.498 GC heap before
+{Heap before GC invocations=9 (full 0):
+ def new generation   total 4928K, used 4928K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0ed0000, 0x00000000f0f50000, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 6690K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  61% used [0x00000000f5c00000, 0x00000000f6288878, 0x00000000f6288a00, 0x00000000f66b0000)
+ Metaspace       used 13580K, capacity 13738K, committed 13952K, reserved 1060864K
+  class space    used 2599K, capacity 2657K, committed 2688K, reserved 1048576K
+Event: 2.501 GC heap after
+Heap after GC invocations=10 (full 0):
+ def new generation   total 4928K, used 512K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0e50000, 0x00000000f0ed0000, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 7328K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  66% used [0x00000000f5c00000, 0x00000000f63283d8, 0x00000000f6328400, 0x00000000f66b0000)
+ Metaspace       used 13580K, capacity 13738K, committed 13952K, reserved 1060864K
+  class space    used 2599K, capacity 2657K, committed 2688K, reserved 1048576K
+}
+Event: 2.615 GC heap before
+{Heap before GC invocations=10 (full 0):
+ def new generation   total 4928K, used 4928K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0e50000, 0x00000000f0ed0000, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 7328K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  66% used [0x00000000f5c00000, 0x00000000f63283d8, 0x00000000f6328400, 0x00000000f66b0000)
+ Metaspace       used 14287K, capacity 14474K, committed 14592K, reserved 1060864K
+  class space    used 2666K, capacity 2753K, committed 2816K, reserved 1048576K
+Event: 2.618 GC heap after
+Heap after GC invocations=11 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff8, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 7955K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  72% used [0x00000000f5c00000, 0x00000000f63c4da8, 0x00000000f63c4e00, 0x00000000f66b0000)
+ Metaspace       used 14287K, capacity 14474K, committed 14592K, reserved 1060864K
+  class space    used 2666K, capacity 2753K, committed 2816K, reserved 1048576K
+}
+Event: 2.747 GC heap before
+{Heap before GC invocations=11 (full 0):
+ def new generation   total 4928K, used 4927K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff8, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 7955K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  72% used [0x00000000f5c00000, 0x00000000f63c4da8, 0x00000000f63c4e00, 0x00000000f66b0000)
+ Metaspace       used 15204K, capacity 15402K, committed 15616K, reserved 1062912K
+  class space    used 2959K, capacity 3041K, committed 3072K, reserved 1048576K
+Event: 2.797 GC heap after
+Heap after GC invocations=12 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff0, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 8557K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  78% used [0x00000000f5c00000, 0x00000000f645b6f8, 0x00000000f645b800, 0x00000000f66b0000)
+ Metaspace       used 15204K, capacity 15402K, committed 15616K, reserved 1062912K
+  class space    used 2959K, capacity 3041K, committed 3072K, reserved 1048576K
+}
+Event: 3.011 GC heap before
+{Heap before GC invocations=12 (full 0):
+ def new generation   total 4928K, used 4927K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff0, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 8557K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  78% used [0x00000000f5c00000, 0x00000000f645b6f8, 0x00000000f645b800, 0x00000000f66b0000)
+ Metaspace       used 15735K, capacity 15914K, committed 16000K, reserved 1062912K
+  class space    used 3080K, capacity 3169K, committed 3200K, reserved 1048576K
+Event: 3.015 GC heap after
+Heap after GC invocations=13 (full 0):
+ def new generation   total 4928K, used 512K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0ed0000, 0x00000000f0f50000, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 8807K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  80% used [0x00000000f5c00000, 0x00000000f6499ff0, 0x00000000f649a000, 0x00000000f66b0000)
+ Metaspace       used 15735K, capacity 15914K, committed 16000K, reserved 1062912K
+  class space    used 3080K, capacity 3169K, committed 3200K, reserved 1048576K
+}
+Event: 3.273 GC heap before
+{Heap before GC invocations=13 (full 0):
+ def new generation   total 4928K, used 4928K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0ed0000, 0x00000000f0f50000, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 8807K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  80% used [0x00000000f5c00000, 0x00000000f6499ff0, 0x00000000f649a000, 0x00000000f66b0000)
+ Metaspace       used 16828K, capacity 17002K, committed 17280K, reserved 1062912K
+  class space    used 3347K, capacity 3425K, committed 3456K, reserved 1048576K
+Event: 3.278 GC heap after
+Heap after GC invocations=14 (full 0):
+ def new generation   total 4928K, used 512K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0e50000, 0x00000000f0ed0000, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 9785K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  89% used [0x00000000f5c00000, 0x00000000f658e490, 0x00000000f658e600, 0x00000000f66b0000)
+ Metaspace       used 16828K, capacity 17002K, committed 17280K, reserved 1062912K
+  class space    used 3347K, capacity 3425K, committed 3456K, reserved 1048576K
+}
+Event: 3.395 GC heap before
+{Heap before GC invocations=14 (full 0):
+ def new generation   total 4928K, used 4928K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K, 100% used [0x00000000f0e50000, 0x00000000f0ed0000, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 9785K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  89% used [0x00000000f5c00000, 0x00000000f658e490, 0x00000000f658e600, 0x00000000f66b0000)
+ Metaspace       used 17283K, capacity 17450K, committed 17664K, reserved 1062912K
+  class space    used 3455K, capacity 3553K, committed 3584K, reserved 1048576K
+Event: 3.398 GC heap after
+Heap after GC invocations=15 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff0, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 10291K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  94% used [0x00000000f5c00000, 0x00000000f660cfd0, 0x00000000f660d000, 0x00000000f66b0000)
+ Metaspace       used 17283K, capacity 17450K, committed 17664K, reserved 1062912K
+  class space    used 3455K, capacity 3553K, committed 3584K, reserved 1048576K
+}
+Event: 3.565 GC heap before
+{Heap before GC invocations=15 (full 0):
+ def new generation   total 4928K, used 4927K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K, 100% used [0x00000000f0a00000, 0x00000000f0e50000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0ed0000, 0x00000000f0f4fff0, 0x00000000f0f50000)
+  to   space 512K,   0% used [0x00000000f0e50000, 0x00000000f0e50000, 0x00000000f0ed0000)
+ tenured generation   total 10944K, used 10291K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  94% used [0x00000000f5c00000, 0x00000000f660cfd0, 0x00000000f660d000, 0x00000000f66b0000)
+ Metaspace       used 18144K, capacity 18334K, committed 18560K, reserved 1064960K
+  class space    used 3574K, capacity 3657K, committed 3712K, reserved 1048576K
+Event: 3.569 GC heap after
+Heap after GC invocations=16 (full 0):
+ def new generation   total 4928K, used 511K [0x00000000f0a00000, 0x00000000f0f50000, 0x00000000f5c00000)
+  eden space 4416K,   0% used [0x00000000f0a00000, 0x00000000f0a00000, 0x00000000f0e50000)
+  from space 512K,  99% used [0x00000000f0e50000, 0x00000000f0ecfff0, 0x00000000f0ed0000)
+  to   space 512K,   0% used [0x00000000f0ed0000, 0x00000000f0ed0000, 0x00000000f0f50000)
+ tenured generation   total 10944K, used 10870K [0x00000000f5c00000, 0x00000000f66b0000, 0x0000000100000000)
+   the space 10944K,  99% used [0x00000000f5c00000, 0x00000000f669d980, 0x00000000f669da00, 0x00000000f66b0000)
+ Metaspace       used 18144K, capacity 18334K, committed 18560K, reserved 1064960K
+  class space    used 3574K, capacity 3657K, committed 3712K, reserved 1048576K
+}
+
+Deoptimization events (51 events):
+Event: 0.404 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d1177f0 method=java.lang.String.startsWith(Ljava/lang/String;I)Z @ 47
+Event: 0.404 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d113cd0 method=java.lang.String.startsWith(Ljava/lang/String;I)Z @ 37
+Event: 1.355 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d1ebcfc method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 52
+Event: 1.356 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d1ebcfc method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 52
+Event: 1.356 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d1ebcfc method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 52
+Event: 1.356 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d1ebcfc method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 52
+Event: 1.397 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d2681b4 method=clojure.lang.Util.hash(Ljava/lang/Object;)I @ 1
+Event: 1.784 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d278ce0 method=clojure.lang.Util.dohasheq(Lclojure/lang/IHashEq;)I @ 1
+Event: 1.784 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d278ce0 method=clojure.lang.Util.dohasheq(Lclojure/lang/IHashEq;)I @ 1
+Event: 1.785 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d278ce0 method=clojure.lang.Util.dohasheq(Lclojure/lang/IHashEq;)I @ 1
+Event: 1.785 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d278ce0 method=clojure.lang.Util.dohasheq(Lclojure/lang/IHashEq;)I @ 1
+Event: 1.787 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d2a6e50 method=clojure.lang.Util.equiv(Ljava/lang/Object;Ljava/lang/Object;)Z @ 41
+Event: 1.799 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d25a690 method=clojure.lang.Symbol.equals(Ljava/lang/Object;)Z @ 2
+Event: 1.875 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d25d48c method=java.lang.CharacterDataLatin1.toUpperCase(I)I @ 12
+Event: 2.007 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d2ad508 method=clojure.lang.Util.equiv(Ljava/lang/Object;Ljava/lang/Object;)Z @ 8
+Event: 2.042 Thread 0x00007fb47c04c800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00007fb46d251108 method=java.util.jar.JarFile.getJarEntry(Ljava/lang/String;)Ljava/util/jar/JarEntry; @ 5
+Event: 2.060 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d2ad0e8 method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 4
+Event: 2.060 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d288f00 method=clojure.lang.PersistentHashMap$BitmapIndexedNode.assoc(Ljava/util/concurrent/atomic/AtomicReference;IILjava/lang/Object;Ljava/lang/Object;Lclojure/lang/Box;)Lclojure/lang/Pe
+Event: 2.454 Thread 0x00007fb47c04c800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00007fb46d331738 method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 1
+Event: 2.454 Thread 0x00007fb47c04c800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00007fb46d324e90 method=clojure.lang.RT.next(Ljava/lang/Object;)Lclojure/lang/ISeq; @ 1
+Event: 2.464 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d306bfc method=clojure.lang.Util.equivPred(Ljava/lang/Object;)Lclojure/lang/Util$EquivPred; @ 23
+Event: 2.713 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d28bf28 method=java.lang.CharacterDataLatin1.toUpperCase(I)I @ 12
+Event: 2.730 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d35cbcc method=clojure.core$ns_publics$fn__6189.invoke(Ljava/lang/Object;)Ljava/lang/Object; @ 25
+Event: 2.740 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d3426b0 method=java.util.concurrent.ConcurrentHashMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 62
+Event: 2.845 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d34f670 method=clojure.lang.Util.equiv(Ljava/lang/Object;Ljava/lang/Object;)Z @ 48
+Event: 3.262 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d334b44 method=clojure.lang.Symbol.equals(Ljava/lang/Object;)Z @ 32
+Event: 3.267 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d3aeda0 method=clojure.lang.Util.equivPred(Ljava/lang/Object;)Lclojure/lang/Util$EquivPred; @ 41
+Event: 3.269 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d3537b8 method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 29
+Event: 3.269 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d3537b8 method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 29
+Event: 3.282 Thread 0x00007fb47c04c800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00007fb46d35a6dc method=clojure.lang.PersistentArrayMap.indexOf(Ljava/lang/Object;)I @ 1
+Event: 3.284 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d321e54 method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 1
+Event: 3.287 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d3537b8 method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 29
+Event: 3.287 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d3537b8 method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 29
+Event: 3.300 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d3c360c method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 29
+Event: 3.300 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d3c360c method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 29
+Event: 3.308 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d3c360c method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 29
+Event: 3.311 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d3c360c method=clojure.lang.RT.first(Ljava/lang/Object;)Ljava/lang/Object; @ 29
+Event: 3.334 Thread 0x00007fb47c04c800 Uncommon trap: reason=null_check action=make_not_entrant pc=0x00007fb46d3b4e5c method=clojure.lang.PersistentArrayMap.equalKey(Ljava/lang/Object;Ljava/lang/Object;)Z @ 1
+Event: 3.446 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d3afb68 method=clojure.lang.Util.equals(Ljava/lang/Object;Ljava/lang/Object;)Z @ 13
+Event: 3.446 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d3afb68 method=clojure.lang.Util.equals(Ljava/lang/Object;Ljava/lang/Object;)Z @ 13
+Event: 3.456 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d3afb68 method=clojure.lang.Util.equals(Ljava/lang/Object;Ljava/lang/Object;)Z @ 13
+Event: 3.465 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d3b86a4 method=java.lang.ClassLoader.getClassLoadingLock(Ljava/lang/String;)Ljava/lang/Object; @ 6
+Event: 3.472 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d211550 method=java.lang.String.indexOf([CII[CIII)I @ 3
+Event: 3.476 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d3afb68 method=clojure.lang.Util.equals(Ljava/lang/Object;Ljava/lang/Object;)Z @ 13
+Event: 3.505 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d32ea9c method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 29
+Event: 3.505 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d32ea9c method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 29
+Event: 3.524 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d32ea9c method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 29
+Event: 3.524 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d32ea9c method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 29
+Event: 3.527 Thread 0x00007fb47c04c800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007fb46d292dd8 method=clojure.lang.Util.dohasheq(Lclojure/lang/IHashEq;)I @ 1
+Event: 3.544 Thread 0x00007fb47c04c800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007fb46d28a408 method=clojure.lang.Util.hasheq(Ljava/lang/Object;)I @ 29
+Event: 4.092 Thread 0x00007fb47c04c800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fb46d284be0 method=clojure.lang.Util.equiv(Ljava/lang/Object;Ljava/lang/Object;)Z @ 15
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (18 events):
+Event: 0.170 Thread 0x00007fb47c04c800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000f0a07cc0) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x8
+Event: 0.170 Thread 0x00007fb47c04c800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000f0a07fa8) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotsp
+Event: 0.655 Thread 0x00007fb47c04c800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f0ad4198) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/jvm.cpp, line 1509]
+Event: 0.655 Thread 0x00007fb47c04c800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f0ad43a8) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/jvm.cpp, line 1509]
+Event: 0.655 Thread 0x00007fb47c04c800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f0ad6de0) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/jvm.cpp, line 1509]
+Event: 0.655 Thread 0x00007fb47c04c800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f0ad6ff0) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/jvm.cpp, line 1509]
+Event: 0.655 Thread 0x00007fb47c04c800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f0ad7d40) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/jvm.cpp, line 1509]
+Event: 0.655 Thread 0x00007fb47c04c800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f0ad7f50) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/jvm.cpp, line 1509]
+Event: 1.919 Thread 0x00007fb47c04c800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x00000000f0b630a8) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/methodHandles.cpp, line 1167]
+Event: 1.920 Thread 0x00007fb47c04c800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x00000000f0b70798) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/methodHandles.cpp, line 1167]
+Event: 2.006 Thread 0x00007fb47c04c800 Implicit null exception at 0x00007fb46d2ad3d9 to 0x00007fb46d2ad4f3
+Event: 2.042 Thread 0x00007fb47c04c800 Implicit null exception at 0x00007fb46d250d0f to 0x00007fb46d2510fd
+Event: 2.043 Thread 0x00007fb47c04c800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f0c9c400) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/jvm.cpp, line 1509]
+Event: 2.043 Thread 0x00007fb47c04c800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f0c9c7f8) thrown at [/builddir/build/BUILD/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/openjdk/hotspot/src/share/vm/prims/jvm.cpp, line 1509]
+Event: 2.454 Thread 0x00007fb47c04c800 Implicit null exception at 0x00007fb46d33080f to 0x00007fb46d33172d
+Event: 2.454 Thread 0x00007fb47c04c800 Implicit null exception at 0x00007fb46d32448f to 0x00007fb46d324e86
+Event: 3.284 Thread 0x00007fb47c04c800 Implicit null exception at 0x00007fb46d321cef to 0x00007fb46d321e45
+Event: 3.334 Thread 0x00007fb47c04c800 Implicit null exception at 0x00007fb46d3b4cef to 0x00007fb46d3b4e4d
+
+Events (250 events):
+Event: 3.492 loading class java/util/Formatter$FormatSpecifier done
+Event: 3.493 loading class java/util/Formatter$Flags
+Event: 3.493 loading class java/util/Formatter$Flags done
+Event: 3.493 loading class java/util/Formatter$Conversion
+Event: 3.493 loading class java/util/Formatter$Conversion done
+Event: 3.494 loading class java/util/Formatter$FixedString
+Event: 3.494 loading class java/util/Formatter$FixedString done
+Event: 3.495 loading class clojure/asm/Frame
+Event: 3.495 loading class clojure/asm/Frame done
+Event: 3.503 loading class clojure/asm/CurrentFrame
+Event: 3.503 loading class clojure/asm/CurrentFrame done
+Event: 3.503 loading class clojure/asm/Label
+Event: 3.503 loading class clojure/asm/Label done
+Event: 3.505 loading class clojure/asm/Edge
+Event: 3.505 loading class clojure/asm/Edge done
+Event: 3.505 Thread 0x00007fb47c04c800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007fb46d32ea9c
+Event: 3.505 Thread 0x00007fb47c04c800 DEOPT PACKING pc=0x00007fb46d32ea9c sp=0x00007fb48352de20
+Event: 3.505 Thread 0x00007fb47c04c800 DEOPT UNPACKING pc=0x00007fb46d04547a sp=0x00007fb48352dd88 mode 2
+Event: 3.505 Thread 0x00007fb47c04c800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007fb46d32ea9c
+Event: 3.505 Thread 0x00007fb47c04c800 DEOPT PACKING pc=0x00007fb46d32ea9c sp=0x00007fb48352de10
+Event: 3.505 Thread 0x00007fb47c04c800 DEOPT UNPACKING pc=0x00007fb46d04547a sp=0x00007fb48352dd78 mode 2
+Event: 3.510 loading class clojure/lang/APersistentMap$4
+Event: 3.510 loading class clojure/lang/APersistentMap$4 done
+Event: 3.510 loading class clojure/asm/Handler
+Event: 3.510 loading class clojure/asm/Handler done
+Event: 3.513 loading class clojure/lang/Compiler$HostExpr
+Event: 3.514 loading class clojure/lang/Compiler$HostExpr done
+Event: 3.515 loading class clojure/lang/Compiler$StaticMethodExpr
+Event: 3.515 loading class clojure/lang/Compiler$StaticMethodExpr done
+Event: 3.515 loading class clojure/lang/Compiler$MethodExpr
+Event: 3.516 loading class clojure/lang/Compiler$MethodExpr done
+Event: 3.522 loading class clojure/lang/Compiler$InstanceMethodExpr
+Event: 3.522 loading class clojure/lang/Compiler$InstanceMethodExpr done
+Event: 3.524 Thread 0x00007fb47c04c800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007fb46d32ea9c
+Event: 3.524 Thread 0x00007fb47c04c800 DEOPT PACKING pc=0x00007fb46d32ea9c sp=0x00007fb48352dd70
+Event: 3.524 Thread 0x00007fb47c04c800 DEOPT UNPACKING pc=0x00007fb46d04547a sp=0x00007fb48352dcd8 mode 2
+Event: 3.524 Thread 0x00007fb47c04c800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007fb46d32ea9c
+Event: 3.524 Thread 0x00007fb47c04c800 DEOPT PACKING pc=0x00007fb46d32ea9c sp=0x00007fb48352ddf0
+Event: 3.524 Thread 0x00007fb47c04c800 DEOPT UNPACKING pc=0x00007fb46d04547a sp=0x00007fb48352dd58 mode 2
+Event: 3.525 loading class clojure/core$ns$process_reference__6728$fn__6732
+Event: 3.525 loading class clojure/core$ns$process_reference__6728$fn__6732 done
+Event: 3.525 loading class clojure/core$concat$fn__5489
+Event: 3.525 loading class clojure/core$concat$fn__5489 done
+Event: 3.527 Thread 0x00007fb47c04c800 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x00007fb46d292dd8
+Event: 3.527 Thread 0x00007fb47c04c800 DEOPT PACKING pc=0x00007fb46d292dd8 sp=0x00007fb48352e1a0
+Event: 3.527 Thread 0x00007fb47c04c800 DEOPT UNPACKING pc=0x00007fb46d04547a sp=0x00007fb48352e068 mode 2
+Event: 3.527 loading class clojure/core$fn$psig__6271
+Event: 3.527 loading class clojure/core$fn$psig__6271 done
+Event: 3.528 loading class clojure/lang/Compiler$LocalBinding
+Event: 3.528 loading class clojure/lang/Compiler$LocalBinding done
+Event: 3.536 loading class clojure/lang/Compiler$StaticFieldExpr
+Event: 3.536 loading class clojure/lang/Compiler$StaticFieldExpr done
+Event: 3.536 loading class clojure/lang/Compiler$FieldExpr
+Event: 3.536 loading class clojure/lang/Compiler$FieldExpr done
+Event: 3.537 loading class clojure/lang/Compiler$LocalBindingExpr
+Event: 3.537 loading class clojure/lang/Compiler$LocalBindingExpr done
+Event: 3.537 loading class java/lang/reflect/TypeVariable
+Event: 3.539 loading class java/lang/reflect/TypeVariable done
+Event: 3.539 loading class java/lang/reflect/AnnotatedType
+Event: 3.540 loading class java/lang/reflect/AnnotatedType done
+Event: 3.541 loading class clojure/lang/Compiler$TryExpr
+Event: 3.541 loading class clojure/lang/Compiler$TryExpr done
+Event: 3.544 Thread 0x00007fb47c04c800 Uncommon trap: trap_request=0xffffffde fr.pc=0x00007fb46d28a408
+Event: 3.544 Thread 0x00007fb47c04c800 DEOPT PACKING pc=0x00007fb46d28a408 sp=0x00007fb48352d640
+Event: 3.544 Thread 0x00007fb47c04c800 DEOPT UNPACKING pc=0x00007fb46d04547a sp=0x00007fb48352d5d0 mode 2
+Event: 3.564 loading class clojure/lang/Compiler$TheVarExpr
+Event: 3.564 loading class clojure/lang/Compiler$TheVarExpr done
+Event: 3.565 Executing VM operation: GenCollectForAllocation
+Event: 3.569 Executing VM operation: GenCollectForAllocation done
+Event: 3.570 loading class clojure/lang/Agent$Action
+Event: 3.570 loading class clojure/lang/Agent$Action done
+Event: 3.571 loading class clojure/lang/Compiler$IfExpr
+Event: 3.571 loading class clojure/lang/Compiler$IfExpr done
+Event: 3.576 loading class clojure/lang/PersistentTreeMap$Seq
+Event: 3.576 loading class clojure/lang/PersistentTreeMap$Seq done
+Event: 3.577 loading class clojure/spec/alpha$res$fn__1896
+Event: 3.577 loading class clojure/spec/alpha$res$fn__1896 done
+Event: 3.586 loading class clojure/core$partial$fn__5839
+Event: 3.586 loading class clojure/core$partial$fn__5839 done
+Event: 3.587 loading class java/util/LinkedList$Node
+Event: 3.587 loading class java/util/LinkedList$Node done
+Event: 3.588 loading class clojure/lang/PersistentVector$TransientVector
+Event: 3.588 loading class clojure/lang/PersistentVector$TransientVector done
+Event: 3.588 loading class clojure/lang/ITransientVector
+Event: 3.588 loading class clojure/lang/ITransientVector done
+Event: 3.589 loading class java/util/LinkedList$ListItr
+Event: 3.590 loading class java/util/LinkedList$ListItr done
+Event: 3.590 loading class clojure/core$mapv$fn__8445
+Event: 3.590 loading class clojure/core$mapv$fn__8445 done
+Event: 3.590 loading class clojure/walk$postwalk_replace$fn__9586
+Event: 3.590 loading class clojure/walk$postwalk_replace$fn__9586 done
+Event: 3.592 loading class clojure/lang/Compiler$VectorExpr
+Event: 3.592 loading class clojure/lang/Compiler$VectorExpr done
+Event: 3.592 loading class clojure/lang/Compiler$3
+Event: 3.592 loading class clojure/lang/Compiler$3 done
+Event: 3.594 loading class clojure/spec/alpha$and_spec_impl$fn__2174
+Event: 3.594 loading class clojure/spec/alpha$and_spec_impl$fn__2174 done
+Event: 3.598 loading class clojure/spec/alpha$and_spec_impl$reify__2183
+Event: 3.598 loading class clojure/spec/alpha$and_spec_impl$reify__2183 done
+Event: 3.601 loading class java/util/UUID$Holder
+Event: 3.602 loading class java/util/UUID$Holder done
+Event: 3.602 loading class java/security/SecureRandom
+Event: 3.603 loading class java/util/Random
+Event: 3.604 loading class java/util/Random done
+Event: 3.604 loading class java/security/SecureRandom done
+Event: 3.605 loading class sun/security/jca/Providers
+Event: 3.645 loading class sun/security/jca/Providers done
+Event: 3.649 loading class sun/security/jca/ProviderList
+Event: 3.651 loading class sun/security/jca/ProviderList done
+Event: 3.651 loading class sun/security/jca/ProviderConfig
+Event: 3.651 loading class sun/security/jca/ProviderConfig done
+Event: 3.651 loading class java/security/Provider
+Event: 3.653 loading class java/security/Provider done
+Event: 3.653 Executing VM operation: Deoptimize
+Event: 3.653 Executing VM operation: Deoptimize done
+Event: 3.653 loading class sun/security/jca/ProviderList$3
+Event: 3.654 loading class sun/security/jca/ProviderList$3 done
+Event: 3.654 loading class sun/security/jca/ProviderList$1
+Event: 3.654 loading class sun/security/jca/ProviderList$1 done
+Event: 3.655 loading class java/security/Provider$ServiceKey
+Event: 3.655 loading class java/security/Provider$ServiceKey done
+Event: 3.656 loading class java/security/Provider$EngineDescription
+Event: 3.656 loading class java/security/Provider$EngineDescription done
+Event: 3.658 loading class sun/misc/FloatingDecimal
+Event: 3.660 loading class sun/misc/FloatingDecimal done
+Event: 3.660 loading class sun/misc/FloatingDecimal$ExceptionalBinaryToASCIIBuffer
+Event: 3.661 loading class sun/misc/FloatingDecimal$BinaryToASCIIConverter
+Event: 3.661 loading class sun/misc/FloatingDecimal$BinaryToASCIIConverter done
+Event: 3.661 loading class sun/misc/FloatingDecimal$ExceptionalBinaryToASCIIBuffer done
+Event: 3.661 loading class sun/misc/FloatingDecimal$BinaryToASCIIBuffer
+Event: 3.662 loading class sun/misc/FloatingDecimal$BinaryToASCIIBuffer done
+Event: 3.662 loading class sun/misc/FloatingDecimal$1
+Event: 3.662 loading class sun/misc/FloatingDecimal$1 done
+Event: 3.662 loading class sun/misc/FloatingDecimal$PreparedASCIIToBinaryBuffer
+Event: 3.662 loading class sun/misc/FloatingDecimal$ASCIIToBinaryConverter
+Event: 3.662 loading class sun/misc/FloatingDecimal$ASCIIToBinaryConverter done
+Event: 3.662 loading class sun/misc/FloatingDecimal$PreparedASCIIToBinaryBuffer done
+Event: 3.663 loading class sun/misc/FDBigInteger
+Event: 3.664 loading class sun/misc/FDBigInteger done
+Event: 3.666 loading class sun/security/jca/ProviderList$2
+Event: 3.666 loading class sun/security/jca/ProviderList$2 done
+Event: 3.666 loading class java/security/Security
+Event: 3.668 loading class java/security/Security done
+Event: 3.668 loading class java/security/Security$1
+Event: 3.668 loading class java/security/Security$1 done
+Event: 3.678 loading class sun/security/jca/ProviderConfig$2
+Event: 3.679 loading class sun/security/jca/ProviderConfig$2 done
+Event: 3.680 loading class sun/security/provider/Sun
+Event: 3.682 loading class sun/security/provider/Sun done
+Event: 3.682 loading class sun/security/provider/SunEntries
+Event: 3.683 loading class sun/security/provider/SunEntries done
+Event: 3.683 loading class sun/security/provider/SunEntries$1
+Event: 3.683 loading class sun/security/provider/SunEntries$1 done
+Event: 3.683 loading class sun/security/provider/NativePRNG
+Event: 3.684 loading class java/security/SecureRandomSpi
+Event: 3.684 loading class java/security/SecureRandomSpi done
+Event: 3.684 loading class sun/security/provider/NativePRNG done
+Event: 3.684 loading class sun/security/provider/NativePRNG$Variant
+Event: 3.684 loading class sun/security/provider/NativePRNG$Variant done
+Event: 3.684 loading class sun/security/provider/NativePRNG$1
+Event: 3.685 loading class sun/security/provider/NativePRNG$1 done
+Event: 3.685 loading class sun/security/provider/NativePRNG$2
+Event: 3.685 loading class sun/security/provider/NativePRNG$2 done
+Event: 3.690 loading class sun/security/provider/NativePRNG$RandomIO
+Event: 3.690 loading class sun/security/provider/NativePRNG$RandomIO done
+Event: 3.691 loading class sun/security/provider/NativePRNG$Blocking
+Event: 3.692 loading class sun/security/provider/NativePRNG$Blocking done
+Event: 3.692 loading class sun/security/provider/NativePRNG$NonBlocking
+Event: 3.692 loading class sun/security/provider/NativePRNG$NonBlocking done
+Event: 3.692 loading class java/util/LinkedHashMap$LinkedEntrySet
+Event: 3.693 loading class java/util/LinkedHashMap$LinkedEntrySet done
+Event: 3.693 loading class java/util/LinkedHashMap$LinkedEntryIterator
+Event: 3.694 loading class java/util/LinkedHashMap$LinkedHashIterator
+Event: 3.694 loading class java/util/LinkedHashMap$LinkedHashIterator done
+Event: 3.694 loading class java/util/LinkedHashMap$LinkedEntryIterator done
+Event: 3.694 loading class java/security/Provider$Service
+Event: 3.695 loading class java/security/Provider$Service done
+Event: 3.695 loading class java/security/Provider$UString
+Event: 3.695 loading class java/security/Provider$UString done
+Event: 3.697 loading class java/util/LinkedHashSet
+Event: 3.699 loading class java/util/LinkedHashSet done
+Event: 3.699 loading class java/util/LinkedHashMap$LinkedValues
+Event: 3.699 loading class java/util/LinkedHashMap$LinkedValues done
+Event: 3.699 loading class java/util/LinkedHashMap$LinkedValueIterator
+Event: 3.699 loading class java/util/LinkedHashMap$LinkedValueIterator done
+Event: 3.699 loading class java/util/LinkedHashMap$LinkedKeySet
+Event: 3.700 loading class java/util/LinkedHashMap$LinkedKeySet done
+Event: 3.700 loading class java/util/LinkedHashMap$LinkedKeyIterator
+Event: 3.700 loading class java/util/LinkedHashMap$LinkedKeyIterator done
+Event: 3.700 loading class sun/security/jca/GetInstance
+Event: 3.700 loading class sun/security/jca/GetInstance done
+Event: 3.700 loading class sun/security/jca/GetInstance$Instance
+Event: 3.701 loading class sun/security/jca/GetInstance$Instance done
+Event: 3.701 loading class sun/security/provider/SecureRandom
+Event: 3.702 loading class sun/security/provider/SecureRandom done
+Event: 3.702 loading class java/security/MessageDigest
+Event: 3.703 loading class java/security/MessageDigestSpi
+Event: 3.703 loading class java/security/MessageDigestSpi done
+Event: 3.703 loading class java/security/MessageDigest done
+Event: 3.703 loading class sun/security/provider/SHA
+Event: 3.703 loading class sun/security/provider/DigestBase
+Event: 3.703 loading class sun/security/provider/DigestBase done
+Event: 3.703 loading class sun/security/provider/SHA done
+Event: 3.703 loading class java/security/MessageDigest$Delegate
+Event: 3.704 loading class java/security/MessageDigest$Delegate done
+Event: 3.704 loading class sun/security/provider/ByteArrayAccess
+Event: 3.705 loading class sun/security/provider/ByteArrayAccess done
+Event: 3.705 loading class clojure/spec/alpha$or_spec_impl$fn__2108
+Event: 3.705 loading class clojure/spec/alpha$or_spec_impl$fn__2108 done
+Event: 3.707 loading class clojure/spec/alpha$or_spec_impl$reify__2118
+Event: 3.707 loading class clojure/spec/alpha$or_spec_impl$reify__2118 done
+Event: 3.719 loading class clojure/lang/Compiler$SetExpr
+Event: 3.719 loading class clojure/lang/Compiler$SetExpr done
+Event: 3.722 loading class clojure/spec/alpha$filter_alt$fn__2336
+Event: 3.722 loading class clojure/spec/alpha$filter_alt$fn__2336 done
+Event: 3.722 loading class clojure/core$map$fn__5873
+Event: 3.722 loading class clojure/core$map$fn__5873 done
+Event: 3.724 loading class clojure/spec/alpha$filter_alt$fn__2338
+Event: 3.724 loading class clojure/spec/alpha$filter_alt$fn__2338 done
+Event: 3.727 loading class clojure/spec/alpha$every_impl$fn__2227
+Event: 3.727 loading class clojure/spec/alpha$every_impl$fn__2227 done
+Event: 3.734 loading class clojure/spec/alpha$every_impl$check_QMARK___2229
+Event: 3.734 loading class clojure/spec/alpha$every_impl$check_QMARK___2229 done
+Event: 3.734 loading class clojure/spec/alpha$every_impl$fn__2231
+Event: 3.734 loading class clojure/spec/alpha$every_impl$fn__2231 done
+Event: 3.735 loading class clojure/spec/alpha$every_impl$addcv__2233
+Event: 3.735 loading class clojure/spec/alpha$every_impl$addcv__2233 done
+Event: 3.735 loading class clojure/spec/alpha$every_impl$cfns__2235
+Event: 3.735 loading class clojure/spec/alpha$every_impl$cfns__2235 done
+Event: 3.736 loading class clojure/spec/alpha$every_impl$reify__2254
+Event: 3.736 loading class clojure/spec/alpha$every_impl$reify__2254 done
+Event: 3.951 loading class clojure/lang/Compiler$EmptyExpr
+Event: 3.951 loading class clojure/lang/Compiler$EmptyExpr done
+Event: 4.087 Thread 0x00007fb47c04c800 Uncommon trap: trap_request=0xffffff65 fr.pc=0x00007fb46d284be0
+Event: 4.094 Thread 0x00007fb47c04c800 DEOPT PACKING pc=0x00007fb46d284be0 sp=0x00007fb48352d670
+Event: 4.094 Thread 0x00007fb47c04c800 DEOPT UNPACKING pc=0x00007fb46d04547a sp=0x00007fb48352d5d8 mode 2
+Event: 4.094 loading class clojure/lang/Compiler$NumberExpr
+Event: 4.095 loading class clojure/lang/Compiler$NumberExpr done
+Event: 5.331 Executing VM operation: EnableBiasedLocking
+Event: 6.286 Executing VM operation: EnableBiasedLocking done
+Event: 201.654 loading class clojure/spec/alpha$tuple_impl$fn__2096
+Event: 202.174 loading class clojure/spec/alpha$tuple_impl$fn__2096 done
+Event: 229.256 loading class clojure/spec/alpha$tuple_impl$reify__2098
+Event: 229.874 loading class clojure/spec/alpha$tuple_impl$reify__2098 done
+Event: 336.602 loading class clojure/spec/alpha$keys$unk__1920
+Event: 337.132 loading class clojure/spec/alpha$keys$unk__1920 done
+Event: 352.917 loading class clojure/core$tree_seq$walk__6387
+Event: 353.458 loading class clojure/core$tree_seq$walk__6387 done
+Event: 379.220 loading class clojure/core$tree_seq$walk__6387$fn__6388
+Event: 380.584 loading class clojure/core$tree_seq$walk__6387$fn__6388 done
+
+
+Dynamic libraries:
+f0a00000-f0f50000 rw-p 00000000 00:00 0 
+f0f50000-f5c00000 ---p 00000000 00:00 0 
+f5c00000-f66b0000 rw-p 00000000 00:00 0 
+f66b0000-100000000 ---p 00000000 00:00 0 
+100000000-1003a0000 rw-p 00000000 00:00 0 
+1003c0000-140000000 ---p 00000000 00:00 0 
+55bd5815a000-55bd5815b000 r-xp 00000000 ca:01 127419                     /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/bin/java
+55bd5835a000-55bd5835b000 r--p 00000000 ca:01 127419                     /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/bin/java
+55bd5835b000-55bd5835c000 rw-p 00001000 ca:01 127419                     /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/bin/java
+55bd5a283000-55bd5a2a4000 rw-p 00000000 00:00 0                          [heap]
+7fb444000000-7fb44464f000 rw-p 00000000 00:00 0 
+7fb44464f000-7fb448000000 ---p 00000000 00:00 0 
+7fb448000000-7fb448021000 rw-p 00000000 00:00 0 
+7fb448021000-7fb44c000000 ---p 00000000 00:00 0 
+7fb44c000000-7fb44c021000 rw-p 00000000 00:00 0 
+7fb44c021000-7fb450000000 ---p 00000000 00:00 0 
+7fb450000000-7fb45164b000 rw-p 00000000 00:00 0 
+7fb45164b000-7fb454000000 ---p 00000000 00:00 0 
+7fb454000000-7fb454021000 rw-p 00000000 00:00 0 
+7fb454021000-7fb458000000 ---p 00000000 00:00 0 
+7fb459430000-7fb460000000 r--p 00000000 ca:01 13407722                   /usr/lib/locale/locale-archive
+7fb460000000-7fb460021000 rw-p 00000000 00:00 0 
+7fb460021000-7fb464000000 ---p 00000000 00:00 0 
+7fb4666fa000-7fb466a19000 rw-p 00000000 00:00 0 
+7fb466a19000-7fb466b19000 ---p 00000000 00:00 0 
+7fb466b19000-7fb466d19000 rw-p 00000000 00:00 0 
+7fb466d19000-7fb466f19000 rw-p 00000000 00:00 0 
+7fb466f19000-7fb467119000 rw-p 00000000 00:00 0 
+7fb467119000-7fb467130000 r-xp 00000000 ca:01 8985041                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libnet.so
+7fb467130000-7fb46732f000 ---p 00017000 ca:01 8985041                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libnet.so
+7fb46732f000-7fb467330000 r--p 00016000 ca:01 8985041                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libnet.so
+7fb467330000-7fb467331000 rw-p 00017000 ca:01 8985041                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libnet.so
+7fb467331000-7fb467342000 r-xp 00000000 ca:01 8985042                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libnio.so
+7fb467342000-7fb467541000 ---p 00011000 ca:01 8985042                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libnio.so
+7fb467541000-7fb467542000 r--p 00010000 ca:01 8985042                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libnio.so
+7fb467542000-7fb467543000 rw-p 00011000 ca:01 8985042                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libnio.so
+7fb467543000-7fb4675ec000 rw-p 00000000 00:00 0 
+7fb4675ec000-7fb4679fa000 r--s 03c13000 ca:01 16798946                   /opt/puppetlabs/server/apps/puppetserver/puppet-server-release.jar
+7fb4679fa000-7fb4679fb000 ---p 00000000 00:00 0 
+7fb4679fb000-7fb467afb000 rw-p 00000000 00:00 0 
+7fb467afb000-7fb467afe000 ---p 00000000 00:00 0 
+7fb467afe000-7fb467bfc000 rw-p 00000000 00:00 0 
+7fb467bfc000-7fb467bfd000 ---p 00000000 00:00 0 
+7fb467bfd000-7fb467c00000 ---p 00000000 00:00 0 
+7fb467c00000-7fb467cfd000 rw-p 00000000 00:00 0 
+7fb467cfd000-7fb467cfe000 ---p 00000000 00:00 0 
+7fb467cfe000-7fb467d01000 ---p 00000000 00:00 0 
+7fb467d01000-7fb467dfe000 rw-p 00000000 00:00 0 
+7fb467dfe000-7fb467e01000 ---p 00000000 00:00 0 
+7fb467e01000-7fb467eff000 rw-p 00000000 00:00 0 
+7fb467eff000-7fb467f02000 ---p 00000000 00:00 0 
+7fb467f02000-7fb468000000 rw-p 00000000 00:00 0 
+7fb468000000-7fb468029000 rw-p 00000000 00:00 0 
+7fb468029000-7fb46c000000 ---p 00000000 00:00 0 
+7fb46c06c000-7fb46c06f000 ---p 00000000 00:00 0 
+7fb46c06f000-7fb46c16d000 rw-p 00000000 00:00 0 
+7fb46c16d000-7fb46c16e000 ---p 00000000 00:00 0 
+7fb46c16e000-7fb46c26e000 rw-p 00000000 00:00 0 
+7fb46c26e000-7fb46c440000 r--s 0449b000 ca:01 4371804                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/rt.jar
+7fb46c440000-7fb46cc40000 rw-p 00000000 00:00 0 
+7fb46cc40000-7fb46cc51000 rw-p 00000000 00:00 0 
+7fb46cc51000-7fb46d000000 ---p 00000000 00:00 0 
+7fb46d000000-7fb46d420000 rwxp 00000000 00:00 0 
+7fb46d420000-7fb47c000000 ---p 00000000 00:00 0 
+7fb47c000000-7fb47c889000 rw-p 00000000 00:00 0 
+7fb47c889000-7fb480000000 ---p 00000000 00:00 0 
+7fb480039000-7fb48018f000 rw-p 00000000 00:00 0 
+7fb48018f000-7fb4801dc000 ---p 00000000 00:00 0 
+7fb4801dc000-7fb4801e4000 r-xp 00000000 ca:01 8985049                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libzip.so
+7fb4801e4000-7fb4803e3000 ---p 00008000 ca:01 8985049                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libzip.so
+7fb4803e3000-7fb4803e4000 r--p 00007000 ca:01 8985049                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libzip.so
+7fb4803e4000-7fb4803e5000 rw-p 00008000 ca:01 8985049                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libzip.so
+7fb4803e5000-7fb4803f0000 r-xp 00000000 ca:01 167021                     /usr/lib64/libnss_files-2.26.so
+7fb4803f0000-7fb4805ef000 ---p 0000b000 ca:01 167021                     /usr/lib64/libnss_files-2.26.so
+7fb4805ef000-7fb4805f0000 r--p 0000a000 ca:01 167021                     /usr/lib64/libnss_files-2.26.so
+7fb4805f0000-7fb4805f1000 rw-p 0000b000 ca:01 167021                     /usr/lib64/libnss_files-2.26.so
+7fb4805f1000-7fb4805f7000 rw-p 00000000 00:00 0 
+7fb4805f7000-7fb4805ff000 r-xp 00000000 ca:01 897935                     /usr/lib64/libnss_sss.so.2
+7fb4805ff000-7fb4807fe000 ---p 00008000 ca:01 897935                     /usr/lib64/libnss_sss.so.2
+7fb4807fe000-7fb4807ff000 r--p 00007000 ca:01 897935                     /usr/lib64/libnss_sss.so.2
+7fb4807ff000-7fb480800000 rw-p 00008000 ca:01 897935                     /usr/lib64/libnss_sss.so.2
+7fb480800000-7fb48082a000 r-xp 00000000 ca:01 8985031                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libjava.so
+7fb48082a000-7fb480a29000 ---p 0002a000 ca:01 8985031                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libjava.so
+7fb480a29000-7fb480a2a000 r--p 00029000 ca:01 8985031                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libjava.so
+7fb480a2a000-7fb480a2c000 rw-p 0002a000 ca:01 8985031                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libjava.so
+7fb480a2c000-7fb480a39000 r-xp 00000000 ca:01 8985048                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libverify.so
+7fb480a39000-7fb480c38000 ---p 0000d000 ca:01 8985048                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libverify.so
+7fb480c38000-7fb480c3a000 r--p 0000c000 ca:01 8985048                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libverify.so
+7fb480c3a000-7fb480c3b000 rw-p 0000e000 ca:01 8985048                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/libverify.so
+7fb480c3b000-7fb480c42000 r-xp 00000000 ca:01 167027                     /usr/lib64/librt-2.26.so
+7fb480c42000-7fb480e41000 ---p 00007000 ca:01 167027                     /usr/lib64/librt-2.26.so
+7fb480e41000-7fb480e42000 r--p 00006000 ca:01 167027                     /usr/lib64/librt-2.26.so
+7fb480e42000-7fb480e43000 rw-p 00007000 ca:01 167027                     /usr/lib64/librt-2.26.so
+7fb480e43000-7fb480e58000 r-xp 00000000 ca:01 166983                     /usr/lib64/libgcc_s-7-20180712.so.1
+7fb480e58000-7fb481057000 ---p 00015000 ca:01 166983                     /usr/lib64/libgcc_s-7-20180712.so.1
+7fb481057000-7fb481058000 r--p 00014000 ca:01 166983                     /usr/lib64/libgcc_s-7-20180712.so.1
+7fb481058000-7fb481059000 rw-p 00015000 ca:01 166983                     /usr/lib64/libgcc_s-7-20180712.so.1
+7fb481059000-7fb481198000 r-xp 00000000 ca:01 167011                     /usr/lib64/libm-2.26.so
+7fb481198000-7fb481397000 ---p 0013f000 ca:01 167011                     /usr/lib64/libm-2.26.so
+7fb481397000-7fb481398000 r--p 0013e000 ca:01 167011                     /usr/lib64/libm-2.26.so
+7fb481398000-7fb481399000 rw-p 0013f000 ca:01 167011                     /usr/lib64/libm-2.26.so
+7fb481399000-7fb48150b000 r-xp 00000000 ca:01 167156                     /usr/lib64/libstdc++.so.6.0.24
+7fb48150b000-7fb48170b000 ---p 00172000 ca:01 167156                     /usr/lib64/libstdc++.so.6.0.24
+7fb48170b000-7fb481715000 r--p 00172000 ca:01 167156                     /usr/lib64/libstdc++.so.6.0.24
+7fb481715000-7fb481717000 rw-p 0017c000 ca:01 167156                     /usr/lib64/libstdc++.so.6.0.24
+7fb481717000-7fb48171b000 rw-p 00000000 00:00 0 
+7fb48171b000-7fb482437000 r-xp 00000000 ca:01 127432                     /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/server/libjvm.so
+7fb482437000-7fb482636000 ---p 00d1c000 ca:01 127432                     /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/server/libjvm.so
+7fb482636000-7fb4826d3000 r--p 00d1b000 ca:01 127432                     /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/server/libjvm.so
+7fb4826d3000-7fb4826fd000 rw-p 00db8000 ca:01 127432                     /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/server/libjvm.so
+7fb4826fd000-7fb48272d000 rw-p 00000000 00:00 0 
+7fb48272d000-7fb4828ce000 r-xp 00000000 ca:01 167005                     /usr/lib64/libc-2.26.so
+7fb4828ce000-7fb482ace000 ---p 001a1000 ca:01 167005                     /usr/lib64/libc-2.26.so
+7fb482ace000-7fb482ad2000 r--p 001a1000 ca:01 167005                     /usr/lib64/libc-2.26.so
+7fb482ad2000-7fb482ad4000 rw-p 001a5000 ca:01 167005                     /usr/lib64/libc-2.26.so
+7fb482ad4000-7fb482ad8000 rw-p 00000000 00:00 0 
+7fb482ad8000-7fb482adb000 r-xp 00000000 ca:01 167009                     /usr/lib64/libdl-2.26.so
+7fb482adb000-7fb482cda000 ---p 00003000 ca:01 167009                     /usr/lib64/libdl-2.26.so
+7fb482cda000-7fb482cdb000 r--p 00002000 ca:01 167009                     /usr/lib64/libdl-2.26.so
+7fb482cdb000-7fb482cdc000 rw-p 00003000 ca:01 167009                     /usr/lib64/libdl-2.26.so
+7fb482cdc000-7fb482cea000 r-xp 00000000 ca:01 16798924                   /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/jli/libjli.so
+7fb482cea000-7fb482ee9000 ---p 0000e000 ca:01 16798924                   /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/jli/libjli.so
+7fb482ee9000-7fb482eea000 r--p 0000d000 ca:01 16798924                   /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/jli/libjli.so
+7fb482eea000-7fb482eeb000 rw-p 0000e000 ca:01 16798924                   /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/amd64/jli/libjli.so
+7fb482eeb000-7fb482eff000 r-xp 00000000 ca:01 167175                     /usr/lib64/libz.so.1.2.7
+7fb482eff000-7fb4830fe000 ---p 00014000 ca:01 167175                     /usr/lib64/libz.so.1.2.7
+7fb4830fe000-7fb4830ff000 r--p 00013000 ca:01 167175                     /usr/lib64/libz.so.1.2.7
+7fb4830ff000-7fb483100000 rw-p 00014000 ca:01 167175                     /usr/lib64/libz.so.1.2.7
+7fb483100000-7fb483118000 r-xp 00000000 ca:01 167023                     /usr/lib64/libpthread-2.26.so
+7fb483118000-7fb483318000 ---p 00018000 ca:01 167023                     /usr/lib64/libpthread-2.26.so
+7fb483318000-7fb483319000 r--p 00018000 ca:01 167023                     /usr/lib64/libpthread-2.26.so
+7fb483319000-7fb48331a000 rw-p 00019000 ca:01 167023                     /usr/lib64/libpthread-2.26.so
+7fb48331a000-7fb48331e000 rw-p 00000000 00:00 0 
+7fb48331e000-7fb483342000 r-xp 00000000 ca:01 166998                     /usr/lib64/ld-2.26.so
+7fb483344000-7fb483349000 r--s 000c1000 ca:01 4371795                    /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.amzn2.0.1.x86_64/jre/lib/jsse.jar
+7fb483349000-7fb483374000 rw-p 00000000 00:00 0 
+7fb483374000-7fb48339a000 ---p 00000000 00:00 0 
+7fb48339a000-7fb4833a0000 rw-p 00000000 00:00 0 
+7fb4833a0000-7fb4833ec000 ---p 00000000 00:00 0 
+7fb4833ec000-7fb48342e000 rw-p 00000000 00:00 0 
+7fb48342e000-7fb483436000 rw-s 00000000 ca:01 127457                     /tmp/hsperfdata_root/20835
+7fb483436000-7fb483437000 ---p 00000000 00:00 0 
+7fb483437000-7fb48343a000 ---p 00000000 00:00 0 
+7fb48343a000-7fb48353b000 rw-p 00000000 00:00 0 
+7fb48353e000-7fb48353f000 r--s 00000000 ca:01 4205402                    /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/facter.jar
+7fb48353f000-7fb483540000 rw-p 00000000 00:00 0 
+7fb483540000-7fb483541000 r--p 00000000 00:00 0 
+7fb483541000-7fb483542000 r--p 00023000 ca:01 166998                     /usr/lib64/ld-2.26.so
+7fb483542000-7fb483543000 rw-p 00024000 ca:01 166998                     /usr/lib64/ld-2.26.so
+7fb483543000-7fb483544000 rw-p 00000000 00:00 0 
+7ffe683d9000-7ffe683fa000 rw-p 00000000 00:00 0                          [stack]
+7ffe683fa000-7ffe683fd000 r--p 00000000 00:00 0                          [vvar]
+7ffe683fd000-7ffe683ff000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+java_command: clojure.main -m puppetlabs.puppetserver.cli.gem --config /etc/puppetlabs/puppetserver/conf.d -- install hiera-eyaml
+java_class_path (initial): /opt/puppetlabs/server/apps/puppetserver/puppet-server-release.jar:/opt/puppetlabs/puppet/lib/ruby/vendor_ruby/facter.jar:/opt/puppetlabs/server/data/puppetserver/jars/*
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/opt/puppetlabs/bin
+USERNAME=root
+SHELL=/bin/bash
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xb196e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xb196e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x8da5b0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x8da5b0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x8da5b0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x8da5b0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x8da470], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x8daab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x8daab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x8daab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x8daab0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Amazon Linux release 2 (Karoo)
+
+uname:Linux 4.14.186-146.268.amzn2.x86_64 #1 SMP Tue Jul 14 18:16:52 UTC 2020 x86_64
+libc:glibc 2.26 NPTL 2.26 
+rlimit: STACK 8192k, CORE 0k, NPROC 3790, NOFILE 4096, AS infinity
+load average:15.14 9.75 4.46
+
+/proc/meminfo:
+MemTotal:        1006944 kB
+MemFree:          828912 kB
+MemAvailable:     773572 kB
+Buffers:               0 kB
+Cached:            19016 kB
+SwapCached:            0 kB
+Active:           111628 kB
+Inactive:          18316 kB
+Active(anon):     111124 kB
+Inactive(anon):      252 kB
+Active(file):        504 kB
+Inactive(file):    18064 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               164 kB
+Writeback:             0 kB
+AnonPages:        110960 kB
+Mapped:            13328 kB
+Shmem:               412 kB
+Slab:              29692 kB
+SReclaimable:      13352 kB
+SUnreclaim:        16340 kB
+KernelStack:        2052 kB
+PageTables:         5028 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      503472 kB
+Committed_AS:     375620 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      116736 kB
+DirectMap2M:      931840 kB
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0
+cpu_memory_nodes: 0
+active_processor_count: 1
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -1
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 133115904
+memory_max_usage_in_bytes: 1855488
+
+
+CPU:total 1 (initial active 1) (1 cores per cpu, 1 threads per core) family 6 model 63 stepping 2, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, tsc, bmi1, bmi2
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 63
+model name	: Intel(R) Xeon(R) CPU E5-2676 v3 @ 2.40GHz
+stepping	: 2
+microcode	: 0x43
+cpu MHz		: 2400.032
+cache size	: 30720 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit
+bogomips	: 4800.11
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 1006944k(828912k free), swap 0k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.252-b09) for linux-amd64 JRE (1.8.0_252-b09), built on May  1 2020 20:50:38 by "mockbuild" with gcc 7.3.1 20180712 (Red Hat 7.3.1-6)
+
+time: Mon Aug 17 10:58:33 2020
+timezone: UTC
+elapsed time: 421 seconds (0d 0h 7m 1s)
+
